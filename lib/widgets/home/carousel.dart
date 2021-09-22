@@ -23,6 +23,7 @@ class _CarouselDemoState extends State<CarouselDemo> {
       autoPlay: true,
       enlargeMainPage: true,
       pagination: true,
+      pagerSize: 10,
       activeIndicator: Colors.pink,
       passiveIndicator: Colors.white,
       items: imageList.map(
