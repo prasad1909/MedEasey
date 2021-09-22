@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:med_easey/screens/products.dart';
+import 'screens/orders_screen.dart';
+import 'screens/products.dart';
 import 'screens/profile_screen.dart';
 import 'screens/upload_prescription.dart';
 import 'screens/splash_screen.dart';
@@ -17,6 +18,7 @@ final routes = {
   '/map': (BuildContext context) => const MapSample(),
   '/permission': (BuildContext context) => NewAskeForPermission(),
   '/profile': (BuildContext context) => const ProfileScreen(),
+  '/orders': (BuildContext context) => const OrderScreen(),
   '/products': (BuildContext context) => Products(productList: ModalRoute.of(context)!.settings.arguments),
   '/upload-prescription': (BuildContext context) => const UploadPrescriptionScreen()
 };

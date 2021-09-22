@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:med_easey/widgets/common/bottomnavbar.dart';
 import '../widgets/common/appbar.dart';
 import '../widgets/prescription/upload_button.dart';
 
@@ -27,6 +28,7 @@ class _UploadPrescriptionScreenState extends State<UploadPrescriptionScreen> {
     return Scaffold(
         backgroundColor: Colors.blueAccent,
         appBar: const BasicAppbar(),
+        bottomNavigationBar: const BottomNavBar(1),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

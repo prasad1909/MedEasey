@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({Key? key}) : super(key: key);
+  final int index;
+  const BottomNavBar(this.index, {Key? key}) : super(key: key);
 
   @override
   _BottomNavBarState createState() => _BottomNavBarState();
@@ -16,26 +17,36 @@ class _BottomNavBarState extends State<BottomNavBar> {
     final textTheme = Theme.of(context).textTheme;
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
-      currentIndex: _currentIndex,
+      currentIndex: widget.index,
       backgroundColor: colorScheme.surface,
       selectedItemColor: Color(0xFFC5032B),
       unselectedItemColor: colorScheme.onSurface.withOpacity(.60),
       selectedLabelStyle: textTheme.caption,
       unselectedLabelStyle: textTheme.caption,
       onTap: (value) {
-        print(value);
-        if (value == 0) {
-          Navigator.pushNamed(context, '/home');
-        } else if (value == 1) {
-          print('here');
-          Navigator.pushNamed(context, '/upload-prescription');
-        } else if (value == 2) {
-          Navigator.pushNamed(context, '/orders');
-        } else if (value == 3) {
-          Navigator.pushNamed(context, '/profile');
+        if (widget.index != value) {
+          if (value == 0) {
+            Navigator.popAndPushNamed(context, '/home');
+          } else if (value == 1) {
+            if (widget.index != 0) {
+              Navigator.popAndPushNamed(context, '/upload-prescription');
+            } else {
+              Navigator.pushNamed(context, '/upload-prescription');
+            }
+          } else if (value == 2) {
+            if (widget.index != 0) {
+              Navigator.popAndPushNamed(context, '/orders');
+            } else {
+              Navigator.pushNamed(context, '.orders');
+            }
+          } else if (value == 3) {
+            if (widget.index != 0) {
+              Navigator.popAndPushNamed(context, '/profile');
+            } else {
+              Navigator.pushNamed(context, '/profile');
+            }
+          }
         }
-        // Respond to item press.
-        setState(() => _currentIndex = value);
       },
       items: [
         BottomNavigationBarItem(

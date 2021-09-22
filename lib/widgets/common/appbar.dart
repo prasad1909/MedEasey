@@ -31,21 +31,20 @@ class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
         Padding(
-            padding: EdgeInsets.only(right: 20.0),
+            padding: const EdgeInsets.only(right: 20.0),
             child: GestureDetector(
-                child:  Icon(
+                child:  const Icon(
                   Icons.shopping_cart_rounded,
                   size: 26.0,
                 ),
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Login()),
+                    MaterialPageRoute(builder: (context) => const Login()),
                   );
                 }                  )
         ),
       ],
-
     );
   }
 

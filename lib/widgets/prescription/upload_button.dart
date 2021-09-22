@@ -47,9 +47,7 @@ class _UploadButtonState extends State<UploadButton> {
                 await textDetector.processImage(inputImage);
             for (TextBlock block in recognisedText.blocks) {
               for (TextLine line in block.lines) {
-                for (TextElement element in line.elements) {
-                  imageText += element.text + ' ';
-                }
+                imageText += line.text + '\n';
               }
             }
             UploadPrescriptionScreen.of(context)!.text = imageText;
