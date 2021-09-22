@@ -1,4 +1,5 @@
 import 'package:camera/camera.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
-      routes: routes
+      routes: routes,
+      theme: ThemeData(textTheme: GoogleFonts.montserratTextTheme())
     );
   }
 }

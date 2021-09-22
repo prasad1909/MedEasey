@@ -138,12 +138,15 @@ class _LoginState extends State<Login> {
                         controller: email,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(
+                              borderSide: (BorderSide(color: Colors.red, width: 15.0)),
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(15)),
+                                  BorderRadius.all(Radius.circular(15),
+
+                                  ),
                             ),
-                            prefixIcon: Icon(Icons.email_rounded),
+                            prefixIcon: Icon(Icons.email_rounded, size: 35,),
                             labelText: 'Enter Email',
-                            labelStyle: TextStyle(color: Colors.black)),
+                            labelStyle: TextStyle(color: Colors.black, fontSize: 20)),
                         style: const TextStyle(color: Colors.black),
                       ),
                     ),
@@ -159,13 +162,14 @@ class _LoginState extends State<Login> {
                         controller: password,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.greenAccent, width: 15.0),
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(15))),
-                            prefixIcon: Icon(Icons.vpn_key_outlined),
+                                    BorderRadius.all(Radius.circular(15),)),
+                            prefixIcon: Icon(Icons.vpn_key_outlined, size: 35,),
                             labelText: 'Enter Password',
                             labelStyle: TextStyle(color: Colors.black)),
                         obscureText: true,
-                        style: const TextStyle(color: Colors.black),
+                        style: const TextStyle(color: Colors.black,fontSize: 20),
                       ),
                     ),
                     const SizedBox(height: 20),
