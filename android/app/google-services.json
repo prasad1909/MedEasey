@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "115020582808",
+    "project_id": "medeasey",
+    "storage_bucket": "medeasey.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:115020582808:android:8bfb632c06f33347bb65ed",
+        "android_client_info": {
+          "package_name": "com.example.med_easey"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "115020582808-j0c485543famau5ocepsp6fiqcb3no7a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.med_easey",
+            "certificate_hash": "b186309f65dee659553983a68463188ca241f60d"
+          }
+        },
+        {
+          "client_id": "115020582808-j8bfto4a7i60m6jv9f9ji6vh48ipi4ba.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgmcgJheCotHaqnH9_1ePG8h5abMrCnfM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "115020582808-j8bfto4a7i60m6jv9f9ji6vh48ipi4ba.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
