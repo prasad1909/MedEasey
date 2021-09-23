@@ -92,7 +92,7 @@ class _RegisterState extends State<Register> {
                       width: MediaQuery.of(context).size.width * 0.8,
                       height: MediaQuery.of(context).size.height/15,
                       child: TextFormField(
-                        controller: email,
+                        controller: username,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(
                               borderSide: (BorderSide(color: Colors.red, width: 15.0)),

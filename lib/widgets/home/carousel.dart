@@ -23,16 +23,17 @@ class _CarouselDemoState extends State<CarouselDemo> {
       autoPlay: true,
       enlargeMainPage: true,
       pagination: true,
-      pagerSize: 10,
-      activeIndicator: Colors.pink,
+      pagerSize: 8,
+      autoPlayAnimationDuration: const Duration(milliseconds: 700),
+      activeIndicator: Colors.greenAccent.shade200,
       passiveIndicator: Colors.white,
       items: imageList.map(
         (url) {
           return Container(
             margin: const EdgeInsets.all(8.0),
             child: ClipRRect(
-              borderRadius: const BorderRadius.all(Radius.circular(5.0)),
-              child: Image.network(url, fit: BoxFit.cover, width: 1000.0),
+              borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+              child: Image.network(url, fit: BoxFit.cover,),
             ),
           );
         },
