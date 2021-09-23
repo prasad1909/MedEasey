@@ -66,93 +66,45 @@ class _LoginState extends State<Login> {
                   end: Alignment.bottomRight,
                   colors: [
                     Colors.white70,
-                    Colors.blue.shade600,
+                    Colors.greenAccent.shade100,
                   ],
                 )),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Row(children: const [
+                    Row(children: [
                       SizedBox(
-                        width: 50,
+                        width: MediaQuery.of(context).size.width/10,
                       ),
                       Text(
                         'Login',
-                        style: TextStyle(fontSize: 40),
+                        style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
                       ),
                     ]),
-                    const SizedBox(height: 50),
-                    const Text(
-                      'Login with one the following options',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    const SizedBox(height: 30),
-                    Row(children: [
-                      const SizedBox(
-                        width: 40,
-                      ),
-                      SizedBox(
-                          width: 150,
-                          height: 60,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              googleSignIn();
-                            },
-                            child: Image.network(
-                                'http://pngimg.com/uploads/google/google_PNG19635.png',
-                                fit: BoxFit.cover),
-                            style: ElevatedButton.styleFrom(
-                              primary: Colors.black,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                            ),
-                          )),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      SizedBox(
-                          width: 150,
-                          height: 60,
-                          child: ElevatedButton(
-                            onPressed: () {
-                            },
-                            child: const Icon(
-                              Icons.call,
-                              size: 45,
-                              color: Colors.blue,
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              primary: Colors.black,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                            ),
-                          )),
-                    ]),
-                    const SizedBox(
-                      height: 30,
-                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height/20,),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
+                      height: MediaQuery.of(context).size.height/15,
                       child: TextFormField(
                         controller: email,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(
                               borderSide: (BorderSide(color: Colors.red, width: 15.0)),
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(15),
-
+                                  BorderRadius.all(Radius.circular(10),
                                   ),
                             ),
-                            prefixIcon: Icon(Icons.email_rounded, size: 35,),
+                            prefixIcon: Icon(Icons.email_rounded, size: 25,),
                             labelText: 'Enter Email',
-                            labelStyle: TextStyle(color: Colors.black, fontSize: 20)),
+                            labelStyle: TextStyle(color: Colors.black, fontSize: 15)),
                         style: const TextStyle(color: Colors.black),
                       ),
                     ),
-                    const SizedBox(height: 30),
+                    SizedBox(height: MediaQuery.of(context).size.height/50,),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
+                      height: MediaQuery.of(context).size.height/15,
                       child: TextFormField(
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -164,25 +116,29 @@ class _LoginState extends State<Login> {
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.greenAccent, width: 15.0),
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(15),)),
-                            prefixIcon: Icon(Icons.vpn_key_outlined, size: 35,),
+                                    BorderRadius.all(Radius.circular(10),)),
+                            prefixIcon: Icon(Icons.vpn_key_outlined, size: 25,),
                             labelText: 'Enter Password',
                             labelStyle: TextStyle(color: Colors.black)),
                         obscureText: true,
-                        style: const TextStyle(color: Colors.black,fontSize: 20),
+                        style: const TextStyle(color: Colors.black,fontSize: 15),
                       ),
                     ),
                     const SizedBox(height: 20),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.6,
-                        ),
+                        // SizedBox(
+                        //   width: MediaQuery.of(context).size.width * 0.5,
+                        // ),
                         const Text(
                           'Forgot Password?',
                           style:
                               TextStyle(fontSize: 15, color: Color(0xCE1F0226)),
-                        )
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width/10,
+                        ),
                       ],
                     ),
                     const SizedBox(
@@ -193,7 +149,7 @@ class _LoginState extends State<Login> {
                         height: 60,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.pinkAccent,
+                            primary: Colors.greenAccent,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20)),
                           ),
@@ -216,11 +172,61 @@ class _LoginState extends State<Login> {
                             }
                           },
                           child: const Text(
-                            'Login!',
-                            style: TextStyle(fontSize: 20),
+                            'Login',
+                            style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
                           ),
                         )),
-                    const SizedBox(height: 30),
+                    SizedBox(height: MediaQuery.of(context).size.height/30),
+                    const Text(
+                      'OR',
+                      style: TextStyle(fontSize: 25),
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height/30),
+                    const Text(
+                      'Login with one of the following options',
+                      style: TextStyle(fontSize: 15),
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height/30),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          SizedBox(
+                              width: MediaQuery.of(context).size.width/5,
+                              height: MediaQuery.of(context).size.height/15,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  googleSignIn();
+                                },
+                                child: Image.network(
+                                    'http://pngimg.com/uploads/google/google_PNG19635.png',
+                                    fit: BoxFit.cover),
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.black,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                ),
+                              )),
+                          SizedBox(
+                              width: MediaQuery.of(context).size.width/5,
+                              height: MediaQuery.of(context).size.height/15,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                },
+                                child: const Icon(
+                                  Icons.call,
+                                  size: 45,
+                                  color: Colors.blue,
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.black,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                ),
+                              )),
+                        ]),
+                    const SizedBox(
+                      height: 30,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

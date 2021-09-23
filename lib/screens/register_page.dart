@@ -67,7 +67,7 @@ class _RegisterState extends State<Register> {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    Colors.blue.shade600,
+                    Colors.greenAccent.shade100,
                     Colors.white70,
                   ],
                 )),
@@ -75,114 +75,60 @@ class _RegisterState extends State<Register> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Row(children: const [
-                      SizedBox(
-                        width: 50,
-                      ),
-                      Text(
-                        'Register',
-                        style: TextStyle(fontSize: 40),
-                      ),
-                    ]),
-                    const SizedBox(height: 20),
-                    const Text(
-                      'Register with one the following options',
-                      style: TextStyle(fontSize: 18),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height/20,
                     ),
-                    const SizedBox(height: 20),
                     Row(children: [
-                      const SizedBox(
-                        width: 40,
-                      ),
                       SizedBox(
-                          width: 150,
-                          height: 60,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              googleSignIn();
-                            },
-                            child: Image.network(
-                                'http://pngimg.com/uploads/google/google_PNG19635.png',
-                                fit: BoxFit.cover),
-                            style: ElevatedButton.styleFrom(
-                              primary: Colors.black,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                            ),
-                          )),
-                      const SizedBox(
-                        width: 10,
+                        width: MediaQuery.of(context).size.width/10,
                       ),
-                      SizedBox(
-                          width: 150,
-                          height: 60,
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            child: const Icon(
-                              Icons.call,
-                              size: 45,
-                              color: Colors.blue,
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              primary: Colors.black,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                            ),
-                          )),
+                      const Text(
+                        'Register',
+                        style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                      ),
                     ]),
-                    const SizedBox(
-                      height: 30,
-                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height/50,),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
+                      height: MediaQuery.of(context).size.height/15,
                       child: TextFormField(
                         controller: email,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Colors.red, width: 15.0),
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(15),
+                              borderSide: (BorderSide(color: Colors.red, width: 15.0)),
+                              borderRadius:
+                              BorderRadius.all(Radius.circular(10),
                               ),
                             ),
-                            prefixIcon: Icon(
-                              Icons.account_circle_rounded,
-                              size: 35,
-                            ),
+                            prefixIcon: Icon(Icons.email_rounded, size: 25,),
                             labelText: 'Enter Username',
-                            labelStyle:
-                                TextStyle(color: Colors.black, fontSize: 20)),
+                            labelStyle: TextStyle(color: Colors.black, fontSize: 15)),
                         style: const TextStyle(color: Colors.black),
                       ),
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height/50,),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
+                      height: MediaQuery.of(context).size.height/15,
                       child: TextFormField(
                         controller: email,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Colors.red, width: 15.0),
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(15),
+                              borderSide: (BorderSide(color: Colors.red, width: 15.0)),
+                              borderRadius:
+                              BorderRadius.all(Radius.circular(10),
                               ),
                             ),
-                            prefixIcon: Icon(
-                              Icons.email_rounded,
-                              size: 35,
-                            ),
+                            prefixIcon: Icon(Icons.email_rounded, size: 25,),
                             labelText: 'Enter Email',
-                            labelStyle:
-                                TextStyle(color: Colors.black, fontSize: 20)),
+                            labelStyle: TextStyle(color: Colors.black, fontSize: 15)),
                         style: const TextStyle(color: Colors.black),
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: MediaQuery.of(context).size.height/50,),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
+                      height: MediaQuery.of(context).size.height/15,
                       child: TextFormField(
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -192,25 +138,20 @@ class _RegisterState extends State<Register> {
                         controller: password,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Colors.greenAccent, width: 15.0),
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(15),
-                                )),
-                            prefixIcon: Icon(
-                              Icons.vpn_key_outlined,
-                              size: 35,
-                            ),
+                                borderSide: BorderSide(color: Colors.greenAccent, width: 15.0),
+                                borderRadius:
+                                BorderRadius.all(Radius.circular(10),)),
+                            prefixIcon: Icon(Icons.vpn_key_outlined, size: 25,),
                             labelText: 'Enter Password',
                             labelStyle: TextStyle(color: Colors.black)),
                         obscureText: true,
-                        style:
-                            const TextStyle(color: Colors.black, fontSize: 20),
+                        style: const TextStyle(color: Colors.black,fontSize: 15),
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: MediaQuery.of(context).size.height/50,),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
+                      height: MediaQuery.of(context).size.height/15,
                       child: TextFormField(
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -220,32 +161,25 @@ class _RegisterState extends State<Register> {
                         controller: password,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Colors.greenAccent, width: 15.0),
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(15),
-                                )),
-                            prefixIcon: Icon(
-                              Icons.vpn_key_outlined,
-                              size: 35,
-                            ),
-                            labelText: 'Confirm Password',
+                                borderSide: BorderSide(color: Colors.greenAccent, width: 15.0),
+                                borderRadius:
+                                BorderRadius.all(Radius.circular(10),)),
+                            prefixIcon: Icon(Icons.vpn_key_outlined, size: 25,),
+                            labelText: 'Re-enter Password',
                             labelStyle: TextStyle(color: Colors.black)),
                         obscureText: true,
-                        style:
-                            const TextStyle(color: Colors.black, fontSize: 20),
+                        style: const TextStyle(color: Colors.black,fontSize: 15),
                       ),
                     ),
-                    const SizedBox(height: 20),
-                    const SizedBox(
-                      height: 20,
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height/20,
                     ),
                     SizedBox(
                         width: MediaQuery.of(context).size.width * 0.7,
                         height: 60,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.pinkAccent,
+                            primary: Colors.greenAccent,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20)),
                           ),
@@ -269,10 +203,60 @@ class _RegisterState extends State<Register> {
                           },
                           child: const Text(
                             'Register',
-                            style: TextStyle(fontSize: 20),
+                            style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
                           ),
                         )),
-                    const SizedBox(height: 20),
+                    SizedBox(height: MediaQuery.of(context).size.height/30),
+                    const Text(
+                      'OR',
+                      style: TextStyle(fontSize: 25),
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height/30),
+                    const Text(
+                      'Login with one of the following options',
+                      style: TextStyle(fontSize: 15),
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height/30),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          SizedBox(
+                              width: MediaQuery.of(context).size.width/5,
+                              height: MediaQuery.of(context).size.height/15,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  googleSignIn();
+                                },
+                                child: Image.network(
+                                    'http://pngimg.com/uploads/google/google_PNG19635.png',
+                                    fit: BoxFit.cover),
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.black,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                ),
+                              )),
+                          SizedBox(
+                              width: MediaQuery.of(context).size.width/5,
+                              height: MediaQuery.of(context).size.height/15,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                },
+                                child: const Icon(
+                                  Icons.call,
+                                  size: 45,
+                                  color: Colors.blue,
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.black,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                ),
+                              )),
+                        ]),
+                    const SizedBox(
+                      height: 30,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
