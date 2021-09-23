@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:getwidget/getwidget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,6 +22,7 @@ class _CartScreenState extends State<CartScreen> {
     super.initState();
   }
 
+  final user = FirebaseAuth.instance.currentUser;
   List products = [];
   int total = 0;
   var prices = {};

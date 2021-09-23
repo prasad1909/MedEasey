@@ -240,7 +240,25 @@ class _RegisterState extends State<Register> {
                               width: MediaQuery.of(context).size.width/5,
                               height: MediaQuery.of(context).size.height/15,
                               child: ElevatedButton(
-                                onPressed: () {
+                                onPressed: () async{
+                                  await FirebaseAuth.instance.verifyPhoneNumber(
+  phoneNumber: '+91 9867612302',
+  verificationCompleted: (PhoneAuthCredential credential) {
+    FirebaseAuth.instance.signInWithCredential(credential);
+  },
+  verificationFailed: (FirebaseAuthException e) {
+    if (e.code == 'invalid-phone-number') {
+      print('The provided phone number is not valid.');
+    }
+  },
+  codeSent: (String verificationId, int? resendToken) {
+    String smsCode = '1234';
+    PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: verificationId, smsCode: smsCode);
+    FirebaseAuth.instance.signInWithCredential(credential);
+  },
+  timeout: const Duration(seconds: 120),
+  codeAutoRetrievalTimeout: (String verificationId) {},
+);
                                 },
                                 child: const Icon(
                                   Icons.call,

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
@@ -17,6 +18,8 @@ class CheckoutScreen extends StatefulWidget {
 class _CheckoutScreenState extends State<CheckoutScreen> {
   final _razorpay = Razorpay();
   final user = FirebaseAuth.instance.currentUser;
+  var products = {};
+  int price = 0;
   String street = '';
   String sub = '';
   String city = '';
@@ -29,6 +32,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   @override
   void initState() {
     getLocation();
+    getItems();
     _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
     _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
     _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
@@ -41,6 +45,36 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     super.dispose();
   }
 
+  Future getItems() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    final keys = preferences.getKeys().toList();
+    var items = {};
+    for (var i = 0; i < keys.length; i++) {
+      if (keys[i] != 'latitude' &&
+          keys[i] != 'longitude' &&
+          keys[i] != 'firstOpen') {
+        int? q = preferences.getInt(keys[i]);
+        items[keys[i]] = q;
+      }
+    }
+    setState(() {
+      products = items;
+    });
+  }
+
+  Future clearCart() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    final keys = preferences.getKeys().toList();
+
+    for (var i = 0; i < keys.length; i++) {
+      if (keys[i] != 'latitude' &&
+          keys[i] != 'longitude' &&
+          keys[i] != 'firstOpen') {
+        await preferences.remove(keys[i]);
+      }
+    }
+  }
+
   Future getLocation() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     var latitude = preferences.getDouble('latitude');
@@ -48,10 +82,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
     List<Placemark> placemarks =
         await placemarkFromCoordinates(latitude!, longitude!);
-    print(placemarks[0].street);
-    print(placemarks[0].subAdministrativeArea);
-    print(placemarks[0].locality);
-    print(placemarks[0].postalCode);
 
     setState(() {
       street = placemarks[0].street!;
@@ -109,7 +139,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 height: 20,
               ),
               ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     if (paymentValue == 1) {
                       _razorpay.open({
                         'key': 'rzp_test_VOOdqc5o5o3nF0',
@@ -124,6 +154,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         }
                       });
                     }
+                    await FirebaseFirestore.instance
+                        .collection('orders')
+                        .add({'uid': user!.uid, 'items': products, 'paymentType': paymentValue, 'address': address, 'price': widget.price, 'time': DateTime.now().millisecondsSinceEpoch});
+                    await clearCart();
+                    Navigator.popAndPushNamed(context, '/success');
                   },
                   child: const Text('Continue'))
             ],
