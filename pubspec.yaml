@@ -51,6 +51,8 @@ dependencies:
   file_picker: ^4.1.1
   getwidget: ^2.0.4
   google_fonts: ^2.1.0
+  fluttertoast: ^8.0.8
+  razorpay_flutter: ^1.2.7
 
 dev_dependencies:
   flutter_test:

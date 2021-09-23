@@ -21,29 +21,27 @@ class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
               tileMode: TileMode.clamp),
         ),
       ),
-      actions: <Widget>[Padding(
-        padding: const EdgeInsets.fromLTRB(0, 10, 150, 10),
-        child: Text("MedEasey",
-          style: TextStyle(fontSize: 25,
-              fontStyle: FontStyle.italic,
-              color: Colors.black.withRed(1)),
-
+      actions: <Widget>[
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0, 10, 150, 10),
+          child: Text(
+            "MedEasey",
+            style: TextStyle(
+                fontSize: 25,
+                fontStyle: FontStyle.italic,
+                color: Colors.black.withRed(1)),
+          ),
         ),
-      ),
         Padding(
             padding: const EdgeInsets.only(right: 20.0),
             child: GestureDetector(
-                child:  const Icon(
+                child: const Icon(
                   Icons.shopping_cart_rounded,
                   size: 26.0,
                 ),
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Login()),
-                  );
-                }                  )
-        ),
+                  Navigator.pushNamed(context, '/cart');
+                })),
       ],
     );
   }

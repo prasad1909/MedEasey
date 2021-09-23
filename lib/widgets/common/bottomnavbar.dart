@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class BottomNavBar extends StatefulWidget {
   final int index;
@@ -10,6 +12,7 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int _currentIndex = 0;
+  final user = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
@@ -34,35 +37,58 @@ class _BottomNavBarState extends State<BottomNavBar> {
               Navigator.pushNamed(context, '/upload-prescription');
             }
           } else if (value == 2) {
-            if (widget.index != 0) {
-              Navigator.popAndPushNamed(context, '/orders');
+            if (user != null) {
+              if (widget.index != 0) {
+                Navigator.popAndPushNamed(context, '/orders');
+              } else {
+                Navigator.pushNamed(context, '/orders');
+              }
             } else {
-              Navigator.pushNamed(context, '.orders');
+              Fluttertoast.showToast(
+                  msg: "Kindly Login to view this page",
+                  toastLength: Toast.LENGTH_LONG,
+                  gravity: ToastGravity.BOTTOM,
+                  timeInSecForIosWeb: 4,
+                  backgroundColor: Colors.red,
+                  textColor: Colors.white,
+                  fontSize: 16.0);
             }
           } else if (value == 3) {
-            if (widget.index != 0) {
-              Navigator.popAndPushNamed(context, '/profile');
+            if (user != null) {
+              if (widget.index != 0) {
+                Navigator.popAndPushNamed(context, '/profile');
+              } else {
+                Navigator.pushNamed(context, '/profile');
+              }
             } else {
-              Navigator.pushNamed(context, '/profile');
+              Fluttertoast.showToast(
+                msg: "Kindly Login to view this page",
+                toastLength: Toast.LENGTH_LONG,
+                gravity: ToastGravity.BOTTOM,
+                timeInSecForIosWeb: 4,
+                backgroundColor: Colors.red,
+                textColor: Colors.white,
+                fontSize: 16.0
+            );
             }
           }
         }
       },
-      items: [
+      items: const [
         BottomNavigationBarItem(
-          title: Text('Home'),
+          label: 'Home',
           icon: Icon(Icons.home_rounded),
         ),
         BottomNavigationBarItem(
-          title: Text('Scanner'),
+          label: 'Scanner',
           icon: Icon(Icons.document_scanner_rounded),
         ),
         BottomNavigationBarItem(
-          title: Text('Orders'),
+          label: 'Orders',
           icon: Icon(Icons.shopping_bag_outlined),
         ),
         BottomNavigationBarItem(
-          title: Text('Accounts'),
+          label: 'Accounts',
           icon: Icon(Icons.account_circle_rounded),
         ),
       ],

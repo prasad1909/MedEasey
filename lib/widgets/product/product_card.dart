@@ -5,8 +5,10 @@ class ProductCard extends StatefulWidget {
   final String title;
   final int price;
   final String image;
+  final callback;
 
-  const ProductCard(this.title, this.price, this.image, {Key? key})
+  const ProductCard(this.title, this.price, this.image,
+      {Key? key, this.callback})
       : super(key: key);
 
   @override
@@ -33,7 +35,6 @@ class _ProductCardState extends State<ProductCard> {
   Future checkItemInCart() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     var item = preferences.getInt(widget.title);
-    print(widget.title + ' $item');
     if (item != null) {
       setState(() {
         quantity = item;
@@ -47,6 +48,9 @@ class _ProductCardState extends State<ProductCard> {
       quantity += 1;
     });
     await preferences.setInt(widget.title, quantity);
+    if (widget.callback != null) {
+      widget.callback();
+    }
   }
 
   Future decrease() async {
@@ -59,59 +63,73 @@ class _ProductCardState extends State<ProductCard> {
     } else {
       await preferences.setInt(widget.title, quantity);
     }
+    if (widget.callback != null) {
+      widget.callback();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const SizedBox(
-          height: 20,
+        SizedBox(
+          height: MediaQuery.of(context).size.height / 40,
         ),
         Container(
-          height: 200.0,
-          width: 360.0,
+          height: MediaQuery.of(context).size.height / 6,
+          width: MediaQuery.of(context).size.width / 1.1,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(10),
               color: Colors.white,
-              border: Border.all(width: 1)),
+              border: Border.all(width: 0.3)),
           child: Row(
             children: [
-              const SizedBox(
-                width: 20,
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 20,
               ),
-              Image.network(
-                widget.image,
+              Container(
                 width: MediaQuery.of(context).size.width / 5,
                 height: MediaQuery.of(context).size.height / 5,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Image.network(
+                  widget.image,
+                  width: MediaQuery.of(context).size.width / 5,
+                  height: MediaQuery.of(context).size.height / 5,
+                ),
               ),
-              const SizedBox(
-                width: 30,
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 20,
               ),
               Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(
-                    height: 50,
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height / 50,
+                    width: MediaQuery.of(context).size.width / 10,
                   ),
                   SizedBox(
-                    width: 160,
+                    width: MediaQuery.of(context).size.width / 2.2,
                     child: Text(
                       widget.title,
                       style: const TextStyle(
-                        fontSize: 27,
+                        fontSize: 22,
                         color: Colors.black,
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 20,
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height / 90,
                   ),
                   Row(
                     children: [
                       Text(
-                        "₹" + widget.price.toString(),
+                        "₹ " + widget.price.toString(),
                         style: const TextStyle(
-                            fontSize: 26,
+                            fontSize: 23,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
@@ -120,30 +138,39 @@ class _ProductCardState extends State<ProductCard> {
                       ),
                       quantity != 0
                           ? Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                ElevatedButton(
-                                    onPressed: () {
-                                      increase();
-                                    },
-                                    child: const Icon(Icons.add)),
-                                Text(quantity.toString()),
-                                ElevatedButton(
-                                    onPressed: () {
-                                      decrease();
-                                    },
-                                    child: const Icon(Icons.remove)),
-                              ],
-                            )
-                          : ElevatedButton(
-                              onPressed: () async {
-                                await addToCart();
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          ElevatedButton(
+                              onPressed: () {
+                                increase();
                               },
-                              child: const Icon(
-                                Icons.add_shopping_cart_rounded,
-                                size: 20,
+                              child: const Icon(Icons.add),
+                              style: ElevatedButton.styleFrom(
+                              fixedSize: Size(20, 15),
+                              shape: CircleBorder(),
                               ),
-                            ),
+                          ),
+                          Text(quantity.toString()),
+                          ElevatedButton(
+                              onPressed: () {
+                                decrease();
+                              },
+                              child: const Icon(Icons.remove),
+                            style: ElevatedButton.styleFrom(
+                            fixedSize: Size(20, 15),
+                            shape: CircleBorder(),),
+                          ),
+                        ],
+                      )
+                          : ElevatedButton(
+                        onPressed: () async {
+                          await addToCart();
+                        },
+                        child: const Icon(
+                          Icons.add_shopping_cart_rounded,
+                          size: 17,
+                        ),
+                      ),
                     ],
                   ),
                 ],

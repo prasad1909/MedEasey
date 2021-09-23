@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'screens/cart_screen.dart';
+import 'screens/checkout_screen.dart';
 import 'screens/orders_screen.dart';
 import 'screens/products.dart';
 import 'screens/profile_screen.dart';
@@ -15,10 +17,12 @@ final routes = {
   '/home': (BuildContext context) => const HomePage(),
   '/register': (BuildContext context) => const Register(),
   '/login': (BuildContext context) => const Login(),
+  '/cart': (BuildContext context) => const CartScreen(),
   '/map': (BuildContext context) => const MapSample(),
   '/permission': (BuildContext context) => NewAskeForPermission(),
   '/profile': (BuildContext context) => const ProfileScreen(),
   '/orders': (BuildContext context) => const OrderScreen(),
   '/products': (BuildContext context) => Products(productList: ModalRoute.of(context)!.settings.arguments),
-  '/upload-prescription': (BuildContext context) => const UploadPrescriptionScreen()
+  '/upload-prescription': (BuildContext context) => const UploadPrescriptionScreen(),
+  '/checkout': (BuildContext context) => CheckoutScreen(ModalRoute.of(context)!.settings.arguments),
 };

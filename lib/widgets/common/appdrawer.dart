@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +11,28 @@ class AppDrawer extends StatefulWidget {
 
 class _AppDrawerState extends State<AppDrawer> {
   final user = FirebaseAuth.instance.currentUser;
-  
+
+  @override
+  void initState() {
+    if (user != null) {
+      getUser();
+    }
+    super.initState();
+  }
+
+  bool isLoggedin = false;
+  var userData;
+
+  Future getUser() async {
+    final userCred = await FirebaseFirestore.instance
+        .collection('users')
+        .where('uid', isEqualTo: user!.uid)
+        .get();
+    userData = userCred.docs.single.data();
+    setState(() {
+      isLoggedin = true;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,85 +43,100 @@ class _AppDrawerState extends State<AppDrawer> {
         //other styles
       ),
       child: Drawer(
-        child: ListView(
-          children: <Widget>[
-            const SizedBox(
-              width: 60,
-              height: 60,
-              child: CircleAvatar(
-                backgroundColor: Color(0xF352FFE2),
-                // backgroundImage: AssetImage('images/happy.jpg')
+        child: isLoggedin
+            ? ListView(
+                children: <Widget>[
+                  SizedBox(
+                    width: 60,
+                    height: 60,
+                    child: CircleAvatar(
+                        backgroundColor: const Color(0xF352FFE2),
+                        child: Image.network(userData['profilePic'])),
+                  ),
+                  const SizedBox(
+                    height: 22,
+                    width: 40,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                    child: Text(
+                      'Hey ${userData['username']}',
+                      style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(20, 0, 0, 10),
+                    child: Text(
+                      'Your Location- Mumbai',
+                      style: TextStyle(color: Colors.white, fontSize: 12),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 3,
+                  ),
+                  ListTile(
+                    tileColor: const Color(0xF352FFE2),
+                    title: const Text('Your Orders'),
+                    trailing: const Icon(
+                      Icons.add_to_home_screen,
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  ListTile(
+                    tileColor: Colors.lightBlueAccent,
+                    title: const Text('About Us'),
+                    trailing: const Icon(
+                      Icons.login_rounded,
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, '/login');
+                    },
+                  ),
+                  ListTile(
+                    tileColor: const Color(0xF352FFE2),
+                    title: const Text('Contact Us'),
+                    trailing: const Icon(
+                      Icons.payment_rounded,
+                    ),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    tileColor: Colors.lightBlueAccent,
+                    title: const Text('Logout'),
+                    trailing: const Icon(
+                      Icons.logout_rounded,
+                    ),
+                    onTap: () {
+                      FirebaseAuth.instance.signOut();
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
+              )
+            : ListView(
+                children: [
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/login');
+                      },
+                      child: const Text('Login')),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Text('Kindly Login to See All Features')
+                ],
               ),
-            ),
-            const SizedBox(
-              height: 22,
-              width: 40,
-            ),
-            const Padding(
-              padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-              child: Text(
-                'Hey Prithvi',
-                style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white),
-              ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(20, 0, 0, 10),
-              child: Text(
-                'Your Location- Mumbai',
-                style: TextStyle(color: Colors.white, fontSize: 12),
-              ),
-            ),
-            SizedBox(
-              height: 3,
-            ),
-            ListTile(
-              tileColor: Color(0xF352FFE2),
-              title: const Text('Your Orders'),
-              trailing: Icon(
-                Icons.add_to_home_screen,
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              tileColor: Colors.lightBlueAccent,
-              title: const Text('About Us'),
-              trailing: const Icon(
-                Icons.login_rounded,
-              ),
-              onTap: () {
-                Navigator.pushNamed(context, '/login');
-              },
-            ),
-            ListTile(
-              tileColor: Color(0xF352FFE2),
-              title: const Text('Contact Us'),
-              trailing: Icon(
-                Icons.payment_rounded,
-              ),
-              onTap: () {},
-            ),
-            ListTile(
-              tileColor: Colors.lightBlueAccent,
-              title: const Text('Logout'),
-              trailing: Icon(
-                Icons.logout_rounded,
-              ),
-              onTap: () {
-                //Navigator.push( context,
-                //MaterialPageRoute(builder: (context) =>  Login()),
-                //);
-              },
-            ),
-          ],
-        ),
       ),
     );
   }
