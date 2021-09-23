@@ -72,6 +72,7 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.tealAccent,
         appBar: const BasicAppbar(),
         body: SizedBox(
             height: MediaQuery.of(context).size.height,
@@ -107,7 +108,8 @@ class _CartScreenState extends State<CartScreen> {
                       ),
                       ElevatedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/checkout', arguments: total);
+                            Navigator.pushNamed(context, '/checkout',
+                                arguments: total);
                           },
                           child: const Text('Proceed to Checkout'))
                     ],
@@ -115,15 +117,15 @@ class _CartScreenState extends State<CartScreen> {
                 ),
                 Expanded(
                     child: ListView.builder(
-                  shrinkWrap: true,
-                  itemBuilder: (BuildContext context, int index) {
-                    return ProductCard(
+                     shrinkWrap: true,
+                     itemBuilder: (BuildContext context, int index) {
+                       return ProductCard(
                         products[index]['Brand Name'],
                         products[index]['Price'],
                         products[index]['Source Image'],
                         callback: call);
-                  },
-                  itemCount: products.length,
+                    },
+                        itemCount: products.length,
                 ))
               ],
             )));

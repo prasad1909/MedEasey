@@ -81,7 +81,7 @@ class _ProductCardState extends State<ProductCard> {
           width: MediaQuery.of(context).size.width / 1.1,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Colors.white,
+              color: Color(0xFFFFFFFF),
               border: Border.all(width: 0.3)),
           child: Row(
             children: [
@@ -142,6 +142,18 @@ class _ProductCardState extends State<ProductCard> {
                               children: [
                                 ElevatedButton(
                                   onPressed: () {
+                                    decrease();
+                                  },
+                                  child: const Icon(Icons.remove),
+                                  style: ElevatedButton.styleFrom(
+                                    fixedSize: Size(20, 15),
+                                    shape: CircleBorder(),
+                                    textStyle: TextStyle(color: Colors.teal),
+                                  ),
+                                ),
+                                Text(quantity.toString()),
+                                ElevatedButton(
+                                  onPressed: () {
                                     increase();
                                   },
                                   child: const Icon(Icons.add),
@@ -150,19 +162,9 @@ class _ProductCardState extends State<ProductCard> {
                                     shape: CircleBorder(),
                                   ),
                                 ),
-                                Text(quantity.toString()),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    decrease();
-                                  },
-                                  child: const Icon(Icons.remove),
-                                  style: ElevatedButton.styleFrom(
-                                    fixedSize: Size(20, 15),
-                                    shape: CircleBorder(),
-                                  ),
-                                ),
                               ],
                             )
+
                           : ElevatedButton(
                               onPressed: () async {
                                 await addToCart();
@@ -170,6 +172,7 @@ class _ProductCardState extends State<ProductCard> {
                               child: const Icon(
                                 Icons.add_shopping_cart_rounded,
                                 size: 17,
+                                color: Colors.black,
                               ),
                             ),
                     ],
