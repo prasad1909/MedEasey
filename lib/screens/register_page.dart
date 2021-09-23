@@ -140,7 +140,7 @@ class _RegisterState extends State<Register> {
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(
                               borderSide:
-                                  (BorderSide(color: Colors.red, width: 15.0)),
+                                  BorderSide(color: Colors.red, width: 15.0),
                               borderRadius: BorderRadius.all(
                                 Radius.circular(15),
                               ),
@@ -165,7 +165,7 @@ class _RegisterState extends State<Register> {
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(
                               borderSide:
-                                  (BorderSide(color: Colors.red, width: 15.0)),
+                                  BorderSide(color: Colors.red, width: 15.0),
                               borderRadius: BorderRadius.all(
                                 Radius.circular(15),
                               ),

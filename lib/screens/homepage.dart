@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFFE0FA),
+      backgroundColor: const Color(0xFFFFFFFF),
       appBar: const BasicAppbar(),
       drawer: AppDrawer(),
       body: SingleChildScrollView(
@@ -36,10 +36,10 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
 
-                CenterBox("Banjara Ride \nNow","Multi-day rental", "Book Now"
+                CenterBox("Previous \nOrders","Repeat Order", "Book Now"
                 ),
 
-                CenterBox("Banjara Ride \nNow","Multi-day rental", "Book Now"
+                CenterBox("Covid \nVaccination","#GetJabbed", "Book Your \nSlot Now"
                 )],
             ),
             const SizedBox(

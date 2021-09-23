@@ -39,7 +39,7 @@ CenterBox(
                       Column(
 
                         children: [
-                          Text(this.header,  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold,color: Colors.white)),
+                          Text(this.header,  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold,color: Colors.black)),
                         ],
                       ),
                     ],
@@ -47,14 +47,15 @@ CenterBox(
                   Row(
                     children: [
                       SizedBox(width: 10,height: 40,),
-                      Text(this.title, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: Colors.white)),
+                      Text(this.title, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: Color(
+                          0xF3260247))),
                     ],
                   ),
                   Row(
                     children: [
                       SizedBox(width: 10,height: 40,),
-                      Text(this.subtitle, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w900, color: Colors.yellow)),
-                      Icon(Icons.arrow_forward, color: Colors.yellow,),
+                      Text(this.subtitle, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w900, color: Colors.black)),
+                      Icon(Icons.arrow_forward, color: Color(0xF3551490),),
 
                     ],
                   ),
@@ -69,8 +70,8 @@ CenterBox(
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
                 colors:[
-                  Colors.deepPurpleAccent.shade700,
-                  Colors.deepPurpleAccent.shade200,
+                  Color(0xFF3EFFC8),
+                  Color(0xFF19B675),
                 ],
               ),
             ),);

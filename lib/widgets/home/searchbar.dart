@@ -23,7 +23,7 @@ class SearchBar extends StatelessWidget {
 
           hintText: 'Search',
           hintStyle: TextStyle(
-            color: Colors.blue,
+            color: Colors.teal,
 
           ),
         ),

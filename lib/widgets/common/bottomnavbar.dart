@@ -22,8 +22,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
       type: BottomNavigationBarType.fixed,
       currentIndex: widget.index,
       backgroundColor: colorScheme.surface,
-      selectedItemColor: Color(0xFFC5032B),
-      unselectedItemColor: colorScheme.onSurface.withOpacity(.60),
+      selectedItemColor: Colors.green.shade700,
+      unselectedItemColor: Colors.teal,
       selectedLabelStyle: textTheme.caption,
       unselectedLabelStyle: textTheme.caption,
       onTap: (value) {

@@ -7,13 +7,14 @@ class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      elevation: 0,
       iconTheme: const IconThemeData(color: Colors.black),
       flexibleSpace: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
               colors: [
-                Color(0xFF6915CD),
-                Color(0xFFC756FC),
+                Color(0xFF01D2A1),
+                Color(0xFF55EF9C),
               ],
               begin: FractionalOffset(0.0, 0.0),
               end: FractionalOffset(1.0, 0.0),
