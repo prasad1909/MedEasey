@@ -100,7 +100,7 @@ class _RegisterState extends State<Register> {
                               BorderRadius.all(Radius.circular(10),
                               ),
                             ),
-                            prefixIcon: Icon(Icons.email_rounded, size: 25,),
+                            prefixIcon: Icon(Icons.account_circle_rounded, size: 25,),
                             labelText: 'Enter Username',
                             labelStyle: TextStyle(color: Colors.black, fontSize: 15)),
                         style: const TextStyle(color: Colors.black),

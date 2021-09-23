@@ -53,6 +53,7 @@ dependencies:
   google_fonts: ^2.1.0
   fluttertoast: ^8.0.8
   razorpay_flutter: ^1.2.7
+  geocoding: ^2.0.1
 
 dev_dependencies:
   flutter_test:

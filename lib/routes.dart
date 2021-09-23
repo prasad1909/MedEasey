@@ -9,7 +9,6 @@ import 'screens/splash_screen.dart';
 import 'screens/register_page.dart';
 import 'screens/login.dart';
 import 'screens/homepage.dart';
-import 'screens/maps.dart';
 import 'permission/location_permission.dart';
 
 final routes = {
@@ -18,7 +17,6 @@ final routes = {
   '/register': (BuildContext context) => const Register(),
   '/login': (BuildContext context) => const Login(),
   '/cart': (BuildContext context) => const CartScreen(),
-  '/map': (BuildContext context) => const MapSample(),
   '/permission': (BuildContext context) => NewAskeForPermission(),
   '/profile': (BuildContext context) => const ProfileScreen(),
   '/orders': (BuildContext context) => const OrderScreen(),
