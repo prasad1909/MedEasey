@@ -138,39 +138,40 @@ class _ProductCardState extends State<ProductCard> {
                       ),
                       quantity != 0
                           ? Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          ElevatedButton(
-                              onPressed: () {
-                                increase();
-                              },
-                              child: const Icon(Icons.add),
-                              style: ElevatedButton.styleFrom(
-                              fixedSize: Size(20, 15),
-                              shape: CircleBorder(),
-                              ),
-                          ),
-                          Text(quantity.toString()),
-                          ElevatedButton(
-                              onPressed: () {
-                                decrease();
-                              },
-                              child: const Icon(Icons.remove),
-                            style: ElevatedButton.styleFrom(
-                            fixedSize: Size(20, 15),
-                            shape: CircleBorder(),),
-                          ),
-                        ],
-                      )
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                ElevatedButton(
+                                  onPressed: () {
+                                    increase();
+                                  },
+                                  child: const Icon(Icons.add),
+                                  style: ElevatedButton.styleFrom(
+                                    fixedSize: Size(20, 15),
+                                    shape: CircleBorder(),
+                                  ),
+                                ),
+                                Text(quantity.toString()),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    decrease();
+                                  },
+                                  child: const Icon(Icons.remove),
+                                  style: ElevatedButton.styleFrom(
+                                    fixedSize: Size(20, 15),
+                                    shape: CircleBorder(),
+                                  ),
+                                ),
+                              ],
+                            )
                           : ElevatedButton(
-                        onPressed: () async {
-                          await addToCart();
-                        },
-                        child: const Icon(
-                          Icons.add_shopping_cart_rounded,
-                          size: 17,
-                        ),
-                      ),
+                              onPressed: () async {
+                                await addToCart();
+                              },
+                              child: const Icon(
+                                Icons.add_shopping_cart_rounded,
+                                size: 17,
+                              ),
+                            ),
                     ],
                   ),
                 ],

@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
     } else {
       await _prefs.setBool('firstOpen', true);
       Future.delayed(
-          const Duration(seconds: 3),
+          const Duration(seconds: 10),
           () => Navigator.pushNamedAndRemoveUntil(
               context, '/permission', (route) => false));
     }
@@ -46,9 +46,12 @@ class _SplashScreenState extends State<SplashScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Image.asset(
-                  "assets/images/Logo.png",
-                  width: 160,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(110),
+                  child: Image.asset(
+                    "assets/images/Logo.png",
+                    width: 160,
+                  ),
                 ),
                 const Text(
                   "MedEasey",

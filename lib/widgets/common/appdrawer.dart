@@ -38,8 +38,8 @@ class _AppDrawerState extends State<AppDrawer> {
   Widget build(BuildContext context) {
     return Theme(
       data: Theme.of(context).copyWith(
-        canvasColor: Colors
-            .blue.shade700, //This will change the drawer background to blue.
+        canvasColor: Color(0xFF09B191),
+        //This will change the drawer background to blue.
         //other styles
       ),
       child: Drawer(

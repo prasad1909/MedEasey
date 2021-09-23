@@ -58,8 +58,9 @@ class _UploadButtonState extends State<UploadButton> {
         child: Column(
           children: [
             CircleAvatar(
+              backgroundColor: Colors.teal,
               radius: 20,
-              child: Icon(widget.icon),
+              child: Icon(widget.icon,color: Colors.white, ),
             ),
             const SizedBox(
               height: 10,
