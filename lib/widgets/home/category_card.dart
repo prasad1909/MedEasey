@@ -25,12 +25,18 @@ class CategoryCard extends StatelessWidget {
               borderRadius: const BorderRadius.all(Radius.circular(5.0)),
               child: Image.network(imgUrl, fit: BoxFit.cover, width: 1000.0),
             ),
-            Text(
-              title,
-              style: const TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
+            Center(
+              child: Container(
+                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                child: Text(
+                  title,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+              ),
             ),
           ]),
         ));

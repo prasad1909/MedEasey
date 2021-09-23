@@ -122,7 +122,7 @@ class _ProductCardState extends State<ProductCard> {
                     ),
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height / 90,
+                    height: MediaQuery.of(context).size.height / 120,
                   ),
                   Row(
                     children: [
@@ -133,10 +133,10 @@ class _ProductCardState extends State<ProductCard> {
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
-                      const SizedBox(
-                        width: 10,
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width/40,
                       ),
-                      quantity != 0
+                      quantity > 0
                           ? Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
@@ -146,18 +146,25 @@ class _ProductCardState extends State<ProductCard> {
                                   },
                                   child: const Icon(Icons.remove),
                                   style: ElevatedButton.styleFrom(
+                                    primary: Colors.greenAccent,
                                     fixedSize: Size(20, 15),
                                     shape: CircleBorder(),
                                     textStyle: TextStyle(color: Colors.teal),
                                   ),
                                 ),
-                                Text(quantity.toString()),
+                                Text(quantity.toString(),
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                ),
                                 ElevatedButton(
                                   onPressed: () {
                                     increase();
                                   },
                                   child: const Icon(Icons.add),
                                   style: ElevatedButton.styleFrom(
+                                    primary: Colors.greenAccent,
                                     fixedSize: Size(20, 15),
                                     shape: CircleBorder(),
                                   ),
@@ -165,16 +172,32 @@ class _ProductCardState extends State<ProductCard> {
                               ],
                             )
 
-                          : ElevatedButton(
+                          : Container(
+                        child: Row(
+                          //mainAxisAlignment: MainAxisAlignment.end,
+                          //crossAxisAlignment: CrossAxisAlignment.end,
+                          children:[
+                            SizedBox(width: MediaQuery.of(context).size.width/6),
+                            ElevatedButton(
                               onPressed: () async {
                                 await addToCart();
                               },
                               child: const Icon(
                                 Icons.add_shopping_cart_rounded,
-                                size: 17,
+                                size: 20,
                                 color: Colors.black,
                               ),
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.greenAccent,
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+                                fixedSize: Size(20, 40),
+                                elevation: 2.0,
+                              ),
                             ),
+                            SizedBox(width: MediaQuery.of(context).size.width/30),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ],

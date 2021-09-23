@@ -81,43 +81,6 @@ class _CartScreenState extends State<CartScreen> {
             height: MediaQuery.of(context).size.height,
             child: Column(
               children: [
-                const SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  margin: const EdgeInsets.all(10),
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  height: MediaQuery.of(context).size.height * 0.2,
-                  decoration: BoxDecoration(
-                    color: Colors.greenAccent,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        children: [
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          Text('Total ₹$total')
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      ElevatedButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/checkout',
-                                arguments: total);
-                          },
-                          child: const Text('Proceed to Checkout'))
-                    ],
-                  ),
-                ),
                 Expanded(
                     child: ListView.builder(
                      shrinkWrap: true,
@@ -129,8 +92,38 @@ class _CartScreenState extends State<CartScreen> {
                         callback: call);
                     },
                         itemCount: products.length,
-                ))
+                )),
+                SizedBox(height: MediaQuery.of(context).size.height/50,),
+                Positioned(
+                  bottom: 40,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children:[
+                      Container(
+                        height: 40,
+                        width : MediaQuery.of(context).size.width/2.5,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          child: Text('₹ $total', style: TextStyle(fontSize:23, color: Colors.black, fontWeight: FontWeight.w300))),
+                      ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/checkout',
+                                arguments: total);
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.greenAccent,
+                            fixedSize: Size(MediaQuery.of(context).size.width/2.5, 50),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                          ),
+                          child: const Text('Checkout  >', style: TextStyle(fontSize:21, color: Colors.black, fontWeight: FontWeight.bold)))
+                    ],
+                  ),
+                ),
+                SizedBox(height: MediaQuery.of(context).size.height/40,),
               ],
-            )));
+            ),
+        ),);
   }
 }
