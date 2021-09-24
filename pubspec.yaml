@@ -54,6 +54,7 @@ dependencies:
   fluttertoast: ^8.0.8
   razorpay_flutter: ^1.2.7
   geocoding: ^2.0.1
+  flutter_web_browser: ^0.15.0
 
 dev_dependencies:
   flutter_test:
