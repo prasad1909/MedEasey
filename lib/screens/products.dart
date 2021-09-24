@@ -12,23 +12,10 @@ class Products extends StatelessWidget {
         appBar: const BasicAppbar(),
         body: ListView.builder(
           itemBuilder: (BuildContext context, int index) {
-            var category = productList[index]['Category'];
-            var imageName;
-            if (category == 'Covid Essentials') {
-              imageName = (index + 1).toString() + 'CE.png';
-            } else if (category == 'Personal Care') {
-              imageName = (index + 1).toString() + 'PC.png';
-            } else if (category == 'General Medication') {
-              imageName = (index + 1).toString() + 'GM.png';
-            } else if (category == 'Medical Devices') {
-              imageName = (index + 1).toString() + 'MD.png';
-            } else {
-              imageName = (index + 1).toString() + 'NS.png';
-            }
             return ProductCard(
                 productList[index]['Brand Name'],
                 productList[index]['Price'],
-                imageName);
+                productList[index]['Image Name']);
           },
           itemCount: productList.length,
         ));

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -36,15 +38,34 @@ class _OrderScreenState extends State<OrderScreen> {
               return ListView(
                 children: snapshot.data!.docs.map((DocumentSnapshot document) {
                   var text = '';
-                  print(document['items']);
+                  var items = document['items'];
+                  var keys = items.keys.toList();
+                  for (var i = 0; i < keys.length; i++) {
+                    var spaces = '';
+                    for (var j = 0; j < 50 - keys[i].length; j++) {
+                      spaces += '';
+                    }
+                    text += ' ' +
+                        keys[i] +
+                        spaces +
+                        items[keys[i]].toString() +
+                        '\n';
+                  }
 
-                  var payment = document['paymentType'] == 0? 'Cash on Delivery':'RazorPay';
+                  var payment = document['paymentType'] == 0
+                      ? 'Cash on Delivery'
+                      : 'RazorPay';
                   return Column(
                     children: [
-                      const SizedBox(height: 10,),
+                      const SizedBox(
+                        height: 10,
+                      ),
                       GFAccordion(
-                          title: 'Order Id : ' + document['time'].toString(),
-                          content: 'Items : \nPrice: \t\t'+document['price'].toString()+'\nPayment Type : \t' + payment,
+                        title: 'Order Id : ' + document['time'].toString(),
+                        content: 'Items : \n$text Price: \t\t' +
+                            document['price'].toString() +
+                            '\nPayment Type : \t' +
+                            payment,
                       )
                     ],
                   );

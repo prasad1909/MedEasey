@@ -16,10 +16,8 @@ class UploadPrescriptionScreen extends StatefulWidget {
 
 class _UploadPrescriptionScreenState extends State<UploadPrescriptionScreen> {
   bool isUploaded = false;
-  String _text = '';
   var imageBytes;
 
-  set text(String value) => setState(() => _text = value);
   set isUp(bool val) => setState(() => isUploaded = val);
   set img(bytes) => setState(() => imageBytes = bytes);
 
@@ -110,7 +108,6 @@ class _UploadPrescriptionScreenState extends State<UploadPrescriptionScreen> {
               const SizedBox(height: 20),
               isUploaded ? Column (
                 children: [
-                  Text(_text),
                   const SizedBox(height: 10),
                   imageBytes != null ?
                   Image.memory(imageBytes, width: 200, height: 200,) : const SizedBox(),

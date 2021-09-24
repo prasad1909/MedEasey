@@ -86,21 +86,8 @@ class _CartScreenState extends State<CartScreen> {
                       child: ListView.builder(
                       shrinkWrap: true,
                       itemBuilder: (BuildContext context, int index) {
-                       var category = products[index]['Category'];
-                       var imageName;
-                       if (category == 'Covid Essentials') {
-                         imageName = (index + 1).toString() + 'CE.png';
-                       } else if (category == 'Personal Care') {
-                         imageName = (index + 1).toString() + 'PC.png';
-                       } else if (category == 'General Medication') {
-                         imageName = (index + 1).toString() + 'GM.png';
-                       } else if (category == 'Medical Devices') {
-                         imageName = (index + 1).toString() + 'MD.png';
-                       } else {
-                         imageName = (index + 1).toString() + 'NS.png';
-                      }
                         return ProductCard(products[index]['Brand Name'],
-                          products[index]['Price'], imageName,
+                          products[index]['Price'], products[index]['Image Name'],
                           callback: call);
                       },
                       itemCount: products.length,

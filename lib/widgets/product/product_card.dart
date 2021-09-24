@@ -95,7 +95,7 @@ class _ProductCardState extends State<ProductCard> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Image.asset(
-                  'assets/Products/${widget.image}',
+                  'assets/Products/${widget.image}.png',
                   width: MediaQuery.of(context).size.width / 5,
                   height: MediaQuery.of(context).size.height / 5,
                 ),
@@ -134,7 +134,7 @@ class _ProductCardState extends State<ProductCard> {
                             fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
-                        width: MediaQuery.of(context).size.width/40,
+                        width: widget.price.toString().length == 2 ? MediaQuery.of(context).size.width/15 : widget.price.toString().length == 3 ? MediaQuery.of(context).size.width/35 : MediaQuery.of(context).size.width/75,
                       ),
                       quantity > 0
                           ? Row(

@@ -1,8 +1,14 @@
+import 'dart:convert';
+
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:med_easey/utils/popup.dart';
 import 'package:pdf_text/pdf_text.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:string_similarity/string_similarity.dart';
 import '../../screens/upload_prescription.dart';
 
 class UploadButton extends StatefulWidget {
@@ -17,6 +23,36 @@ class UploadButton extends StatefulWidget {
 }
 
 class _UploadButtonState extends State<UploadButton> {
+  Future addToCart(String text) async {
+    List lines = text.split("\n");
+    List l = [];
+    int count = 0;
+    final String response =
+        await rootBundle.loadString('assets/data/FinalData.json');
+    final data = await json.decode(response);
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    for (var i = 0; i < data.length; i++) {
+      print(l.contains(data[i]['Brand Name']));
+      if (!l.contains(data[i]['Brand Name'])) {
+        l.add(data[i]['Brand Name']);
+      }
+    }
+    for (var j = 0; j < lines.length; j++) {
+      for (var k = 0; k < l.length; k++) {
+        if (StringSimilarity.compareTwoStrings(
+                lines[j].toLowerCase(), l[k].toLowerCase()) >
+            0.5) {
+          if (preferences.getInt(l[k]) == null) {
+            await preferences.setInt(l[k], 1);
+            count++;
+            break;
+          }
+        }
+      }
+    }
+    popUp('$count items from your prescription added to cart');
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -34,9 +70,9 @@ class _UploadButtonState extends State<UploadButton> {
               var _pdfDoc =
                   await PDFDoc.fromPath(filePickerResult.files.single.path!);
               String pdfText = await _pdfDoc.text;
-              UploadPrescriptionScreen.of(context)!.text = pdfText;
               UploadPrescriptionScreen.of(context)!.isUp = true;
               UploadPrescriptionScreen.of(context)!.imageBytes = null;
+              await addToCart(pdfText);
             }
           }
           if (widget.title != 'PDF') {
@@ -50,9 +86,9 @@ class _UploadButtonState extends State<UploadButton> {
                 imageText += line.text + '\n';
               }
             }
-            UploadPrescriptionScreen.of(context)!.text = imageText;
             UploadPrescriptionScreen.of(context)!.isUp = true;
             UploadPrescriptionScreen.of(context)!.imageBytes = imgBytes;
+            await addToCart(imageText);
           }
         },
         child: Column(
@@ -60,7 +96,10 @@ class _UploadButtonState extends State<UploadButton> {
             CircleAvatar(
               backgroundColor: Colors.teal,
               radius: 20,
-              child: Icon(widget.icon,color: Colors.white, ),
+              child: Icon(
+                widget.icon,
+                color: Colors.white,
+              ),
             ),
             const SizedBox(
               height: 10,
