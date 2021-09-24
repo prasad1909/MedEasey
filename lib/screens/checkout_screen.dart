@@ -292,7 +292,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             .collection('orders')
                             .add({'uid': user!.uid, 'items': products, 'paymentType': paymentValue, 'address': address, 'price': widget.price, 'time': DateTime.now().millisecondsSinceEpoch});
                         await clearCart();
-                        Navigator.popAndPushNamed(context, '/success');
+                        Navigator.popAndPushNamed(context, '/intermediate');
                       },
                       child: const Text('Continue', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),)),
                   SizedBox(

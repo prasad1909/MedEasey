@@ -12,6 +12,7 @@ import 'screens/register_page.dart';
 import 'screens/login.dart';
 import 'screens/homepage.dart';
 import 'permission/location_permission.dart';
+import 'screens/intermediate.dart';
 
 final routes = {
   '/': (BuildContext context) => const SplashScreen(),
@@ -27,4 +28,5 @@ final routes = {
   '/upload-prescription': (BuildContext context) => const UploadPrescriptionScreen(),
   '/phone': (BuildContext context) => const PhoneRegisterScreen(), 
   '/checkout': (BuildContext context) => CheckoutScreen(ModalRoute.of(context)!.settings.arguments),
+  '/intermediate': (BuildContext context) => const Intermediate(),
 };
