@@ -109,126 +109,101 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: const BasicAppbar(),
-      body: Column(children: [
-        const SizedBox(
-          height: 20,
+      body: Column(
+          children: [
+        SizedBox(
+          height: MediaQuery.of(context).size.height/40,
         ),
-        Container(
-          margin: const EdgeInsets.all(10),
-          width: MediaQuery.of(context).size.width * 0.9,
-          height: MediaQuery.of(context).size.height * 0.2,
-          decoration: BoxDecoration(
-            color: Colors.greenAccent,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                children: [
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Text('Total ₹${widget.price}')
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              ElevatedButton(
-                  onPressed: () async {
-                    if (paymentValue == 1) {
-                      _razorpay.open({
-                        'key': 'rzp_test_VOOdqc5o5o3nF0',
-                        'amount': widget.price * 100,
-                        'name': 'MedEasey',
-                        'description': 'Meds',
-                        'retry': {'enabled': true, 'max_count': 1},
-                        'send_sms_hash': true,
-                        'prefill': {'email': user!.email},
-                        'external': {
-                          'wallets': ['paytm']
-                        }
-                      });
-                    }
-                    await FirebaseFirestore.instance
-                        .collection('orders')
-                        .add({'uid': user!.uid, 'items': products, 'paymentType': paymentValue, 'address': address, 'price': widget.price, 'time': DateTime.now().millisecondsSinceEpoch});
-                    await clearCart();
-                    Navigator.popAndPushNamed(context, '/success');
-                  },
-                  child: const Text('Continue'))
-            ],
-          ),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        const Text('Location Details'),
-        const SizedBox(
-          height: 10,
+        const Text('Location Details',
+        textAlign: TextAlign.start,
+        style: TextStyle(color: Colors.black,
+          fontWeight: FontWeight.w700,
+          fontSize: 20,
+        ),),
+        SizedBox(
+          height: MediaQuery.of(context).size.height/100,
         ),
         Container(
             margin: const EdgeInsets.all(10),
-            width: MediaQuery.of(context).size.width * 0.9,
-            height: MediaQuery.of(context).size.height * 0.2,
+            width: MediaQuery.of(context).size.width/1.2,
+            height: MediaQuery.of(context).size.height/6,
             decoration: BoxDecoration(
-              color: Colors.greenAccent,
+              color:Colors.greenAccent.shade100,
               borderRadius: BorderRadius.circular(10),
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 10,
+                SizedBox(
+                  height: MediaQuery.of(context).size.height/80,
                 ),
                 isEditing
-                    ? SizedBox(
-                        height: 120,
-                        child: TextFormField(
-                            maxLines: 4,
-                            controller: addressController,
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(15),
-                                ),
-                              ),
-                            )))
-                    : Text(address),
+                    ? Container(
+                    width: MediaQuery.of(context).size.width/1.2,
+                    height: MediaQuery.of(context).size.height/7,
+                    child: TextFormField(
+                      autofocus: true,
+                      style: TextStyle(fontSize: 20),
+                        maxLines: 4,
+                        controller: addressController,
+                        decoration: const InputDecoration(
+                          border: InputBorder.none,
+                          contentPadding: EdgeInsets.all(10),
+                        )))
+                    : Row(
+                  children:[
+                    SizedBox(width: MediaQuery.of(context).size.width/20,),
+                    Text(address,
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ],
+                )
               ],
             )),
-        ElevatedButton(
-            onPressed: () {
-              if (isEditing) {
-                setState(() {
-                  address = addressController.text;
-                  isEditing = false;
-                });
-              } else {
-                setState(() {
-                  addressController.text = address;
-                  isEditing = true;
-                });
-              }
-            },
-            child: isEditing
-                ? const Text('Save Address')
-                : const Text('Edit Address')),
-        const SizedBox(
-          height: 20,
+        Row(
+          children:[
+            SizedBox(width: MediaQuery.of(context).size.width/1.3,),
+            ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  fixedSize: const Size(50, 50),
+                  shape: const CircleBorder(),
+                  elevation: 2.0,
+                ),
+                onPressed: () {
+                  if (isEditing) {
+                    setState(() {
+                      address = addressController.text;
+                      isEditing = false;
+                    });
+                  } else {
+                    setState(() {
+                      addressController.text = address;
+                      isEditing = true;
+                    });
+                  }
+                },
+                child: isEditing
+                //? const Text('Save Address')
+                    ? const Icon(Icons.check, color: Colors.white,)
+                    : const Icon(Icons.create_rounded, color: Colors.white,)),
+          ],
         ),
-        const Text('Select Payment'),
-        const SizedBox(
-          height: 10,
+        SizedBox(
+          height: MediaQuery.of(context).size.height/100,
+        ),
+            const Text('Select Payment Mode',
+              textAlign: TextAlign.start,
+              style: TextStyle(color: Colors.black,
+                fontWeight: FontWeight.w700,
+                fontSize: 20,
+              ),),
+        SizedBox(
+            height: MediaQuery.of(context).size.height/120
         ),
         Container(
             margin: const EdgeInsets.all(10),
-            width: MediaQuery.of(context).size.width * 0.9,
-            height: MediaQuery.of(context).size.height * 0.12,
+            padding: EdgeInsets.all(10),
+            width: MediaQuery.of(context).size.width/1.2,
+            height: MediaQuery.of(context).size.height/8,
             decoration: BoxDecoration(
               color: Colors.greenAccent,
               borderRadius: BorderRadius.circular(10),
@@ -255,7 +230,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 const SizedBox(
                   width: 20,
                 ),
-                const Text('Cash On Delivery')
+                const Text('Cash On Delivery', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),)
               ]),
               const SizedBox(
                 height: 10,
@@ -280,10 +255,54 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 const SizedBox(
                   width: 20,
                 ),
-                const Text('RazorPay')
+                const Text('RazorPay', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),)
               ]),
-            ]))
-      ]),
+            ])),
+            SizedBox(height: MediaQuery.of(context).size.height/5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width/15,
+                  ),
+                  Text('₹ ${widget.price}', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+                        fixedSize: Size(MediaQuery.of(context).size.width/1.7,
+                            MediaQuery.of(context).size.height/15),
+                        elevation: 2.0,
+                      ),
+                      onPressed: () async {
+                        if (paymentValue == 1) {
+                          _razorpay.open({
+                            'key': 'rzp_test_VOOdqc5o5o3nF0',
+                            'amount': widget.price * 100,
+                            'name': 'MedEasey',
+                            'description': 'Meds',
+                            'retry': {'enabled': true, 'max_count': 1},
+                            'send_sms_hash': true,
+                            'prefill': {'email': user!.email},
+                            'external': {
+                              'wallets': ['paytm']
+                            }
+                          });
+                        }
+                        await FirebaseFirestore.instance
+                            .collection('orders')
+                            .add({'uid': user!.uid, 'items': products, 'paymentType': paymentValue, 'address': address, 'price': widget.price, 'time': DateTime.now().millisecondsSinceEpoch});
+                        await clearCart();
+                        Navigator.popAndPushNamed(context, '/success');
+                      },
+                      child: const Text('Continue', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),)),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width/15,
+                  ),
+                ],
+              ),
+            SizedBox(height: MediaQuery.of(context).size.height/30),
+            ],
+        ),
     );
   }
 }
