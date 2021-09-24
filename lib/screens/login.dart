@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:med_easey/utils/popup.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -75,36 +76,51 @@ class _LoginState extends State<Login> {
                   children: <Widget>[
                     Row(children: [
                       SizedBox(
-                        width: MediaQuery.of(context).size.width/10,
+                        width: MediaQuery.of(context).size.width / 10,
                       ),
-                      Text(
+                      const Text(
                         'Login',
-                        style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 40, fontWeight: FontWeight.bold),
                       ),
                     ]),
-                    SizedBox(height: MediaQuery.of(context).size.height/20,),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height / 20,
+                    ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
-                      height: MediaQuery.of(context).size.height/15,
+                      height: MediaQuery.of(context).size.height / 15,
                       child: TextFormField(
                         controller: email,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please fill out this field';
+                          }
+                        },
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(
-                              borderSide: (BorderSide(color: Colors.red, width: 15.0)),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10),
-                                  ),
+                              borderSide:
+                                  (BorderSide(color: Colors.red, width: 15.0)),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10),
+                              ),
                             ),
-                            prefixIcon: Icon(Icons.email_rounded, size: 25,),
+                            prefixIcon: Icon(
+                              Icons.email_rounded,
+                              size: 25,
+                            ),
                             labelText: 'Enter Email',
-                            labelStyle: TextStyle(color: Colors.black, fontSize: 15)),
+                            labelStyle:
+                                TextStyle(color: Colors.black, fontSize: 15)),
                         style: const TextStyle(color: Colors.black),
                       ),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height/50,),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height / 50,
+                    ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
-                      height: MediaQuery.of(context).size.height/15,
+                      height: MediaQuery.of(context).size.height / 15,
                       child: TextFormField(
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -114,30 +130,33 @@ class _LoginState extends State<Login> {
                         controller: password,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.greenAccent, width: 15.0),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10),)),
-                            prefixIcon: Icon(Icons.vpn_key_outlined, size: 25,),
+                                borderSide: BorderSide(
+                                    color: Colors.greenAccent, width: 15.0),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                )),
+                            prefixIcon: Icon(
+                              Icons.vpn_key_outlined,
+                              size: 25,
+                            ),
                             labelText: 'Enter Password',
                             labelStyle: TextStyle(color: Colors.black)),
                         obscureText: true,
-                        style: const TextStyle(color: Colors.black,fontSize: 15),
+                        style:
+                            const TextStyle(color: Colors.black, fontSize: 15),
                       ),
                     ),
                     const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        // SizedBox(
-                        //   width: MediaQuery.of(context).size.width * 0.5,
-                        // ),
                         const Text(
                           'Forgot Password?',
                           style:
                               TextStyle(fontSize: 15, color: Color(0xCE1F0226)),
                         ),
                         SizedBox(
-                          width: MediaQuery.of(context).size.width/10,
+                          width: MediaQuery.of(context).size.width / 10,
                         ),
                       ],
                     ),
@@ -160,39 +179,41 @@ class _LoginState extends State<Login> {
                                     .signInWithEmailAndPassword(
                                         email: email.text,
                                         password: password.text);
-                                Navigator.pushNamed(context, '/');
+                                Navigator.pushNamed(context, '/home');
                               } on FirebaseAuthException catch (e) {
                                 if (e.code == 'user-not-found') {
-                                  print('No user found for that email.');
+                                  popUp('Email or Password does\'nt match');
                                 } else if (e.code == 'wrong-password') {
-                                  print(
-                                      'Wrong password provided for that user.');
+                                  popUp('Email or Password does\'nt match');
                                 }
                               }
                             }
                           },
                           child: const Text(
                             'Login',
-                            style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
                           ),
                         )),
-                    SizedBox(height: MediaQuery.of(context).size.height/30),
+                    SizedBox(height: MediaQuery.of(context).size.height / 30),
                     const Text(
                       'OR',
                       style: TextStyle(fontSize: 25),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height/30),
+                    SizedBox(height: MediaQuery.of(context).size.height / 30),
                     const Text(
                       'Login with one of the following options',
                       style: TextStyle(fontSize: 15),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height/30),
+                    SizedBox(height: MediaQuery.of(context).size.height / 30),
                     Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           SizedBox(
-                              width: MediaQuery.of(context).size.width/5,
-                              height: MediaQuery.of(context).size.height/15,
+                              width: MediaQuery.of(context).size.width / 5,
+                              height: MediaQuery.of(context).size.height / 15,
                               child: ElevatedButton(
                                 onPressed: () {
                                   googleSignIn();
@@ -207,10 +228,11 @@ class _LoginState extends State<Login> {
                                 ),
                               )),
                           SizedBox(
-                              width: MediaQuery.of(context).size.width/5,
-                              height: MediaQuery.of(context).size.height/15,
+                              width: MediaQuery.of(context).size.width / 5,
+                              height: MediaQuery.of(context).size.height / 15,
                               child: ElevatedButton(
                                 onPressed: () {
+                                  Navigator.pushNamed(context, '/phone');
                                 },
                                 child: const Icon(
                                   Icons.call,

@@ -26,7 +26,7 @@ class _UploadPrescriptionScreenState extends State<UploadPrescriptionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          backgroundColor: Color(0xFFE5E5EE),
+          backgroundColor: const Color(0xFFE5E5EE),
           appBar: const BasicAppbar(),
           bottomNavigationBar: const BottomNavBar(1),
           body: Column(
@@ -50,7 +50,7 @@ class _UploadPrescriptionScreenState extends State<UploadPrescriptionScreen> {
               Container(
                 margin: const EdgeInsets.only(left: 15),
                 width: MediaQuery.of(context).size.width * 0.9,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(
                     Radius.circular(10),
                   ),

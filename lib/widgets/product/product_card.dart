@@ -81,7 +81,7 @@ class _ProductCardState extends State<ProductCard> {
           width: MediaQuery.of(context).size.width / 1.1,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Color(0xFFFFFFFF),
+              color: const Color(0xFFFFFFFF),
               border: Border.all(width: 0.3)),
           child: Row(
             children: [
@@ -94,8 +94,8 @@ class _ProductCardState extends State<ProductCard> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Image.network(
-                  widget.image,
+                child: Image.asset(
+                  'assets/Products/${widget.image}',
                   width: MediaQuery.of(context).size.width / 5,
                   height: MediaQuery.of(context).size.height / 5,
                 ),
@@ -147,13 +147,13 @@ class _ProductCardState extends State<ProductCard> {
                                   child: const Icon(Icons.remove),
                                   style: ElevatedButton.styleFrom(
                                     primary: Colors.greenAccent,
-                                    fixedSize: Size(20, 15),
-                                    shape: CircleBorder(),
-                                    textStyle: TextStyle(color: Colors.teal),
+                                    fixedSize: const Size(20, 15),
+                                    shape: const CircleBorder(),
+                                    textStyle: const TextStyle(color: Colors.teal),
                                   ),
                                 ),
                                 Text(quantity.toString(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -165,8 +165,8 @@ class _ProductCardState extends State<ProductCard> {
                                   child: const Icon(Icons.add),
                                   style: ElevatedButton.styleFrom(
                                     primary: Colors.greenAccent,
-                                    fixedSize: Size(20, 15),
-                                    shape: CircleBorder(),
+                                    fixedSize: const Size(20, 15),
+                                    shape: const CircleBorder(),
                                   ),
                                 ),
                               ],
@@ -190,7 +190,7 @@ class _ProductCardState extends State<ProductCard> {
                               style: ElevatedButton.styleFrom(
                                 primary: Colors.greenAccent,
                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-                                fixedSize: Size(20, 40),
+                                fixedSize: const Size(20, 40),
                                 elevation: 2.0,
                               ),
                             ),

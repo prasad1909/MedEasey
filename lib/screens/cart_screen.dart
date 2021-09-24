@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:getwidget/getwidget.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -36,7 +36,7 @@ class _CartScreenState extends State<CartScreen> {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     final keys = preferences.getKeys().toList();
     final String response =
-        await rootBundle.loadString('assets/data/dummy.json');
+        await rootBundle.loadString('assets/data/FinalData.json');
     final data = await json.decode(response);
     List items = [];
     var p = {};
@@ -79,16 +79,29 @@ class _CartScreenState extends State<CartScreen> {
         appBar: const BasicAppbar(),
         body: SizedBox(
             height: MediaQuery.of(context).size.height,
-            child: Column(
+            child: products.isNotEmpty ? Column(
               children: [
                 Expanded(
                     child: ListView.builder(
                      shrinkWrap: true,
                      itemBuilder: (BuildContext context, int index) {
+                       var category = products[index]['Category'];
+            var imageName;
+            if (category == 'Covid Essentials') {
+              imageName = (index + 1).toString() + 'CE.png';
+            } else if (category == 'Personal Care') {
+              imageName = (index + 1).toString() + 'PC.png';
+            } else if (category == 'General Medication') {
+              imageName = (index + 1).toString() + 'GM.png';
+            } else if (category == 'Medical Devices') {
+              imageName = (index + 1).toString() + 'MD.png';
+            } else {
+              imageName = (index + 1).toString() + 'NS.png';
+            }
                        return ProductCard(
                         products[index]['Brand Name'],
                         products[index]['Price'],
-                        products[index]['Source Image'],
+                        imageName,
                         callback: call);
                     },
                         itemCount: products.length,
@@ -109,8 +122,19 @@ class _CartScreenState extends State<CartScreen> {
                           child: Text('₹ $total', style: TextStyle(fontSize:23, color: Colors.black, fontWeight: FontWeight.w300))),
                       ElevatedButton(
                           onPressed: () {
+                            if (user != null) {
                             Navigator.pushNamed(context, '/checkout',
                                 arguments: total);
+                            } else {
+                              Fluttertoast.showToast(
+                  msg: "Kindly Login to proceed",
+                  toastLength: Toast.LENGTH_LONG,
+                  gravity: ToastGravity.BOTTOM,
+                  timeInSecForIosWeb: 4,
+                  backgroundColor: Colors.red,
+                  textColor: Colors.white,
+                  fontSize: 16.0);
+                            }
                           },
                           style: ElevatedButton.styleFrom(
                             primary: Colors.greenAccent,
@@ -123,7 +147,8 @@ class _CartScreenState extends State<CartScreen> {
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height/40,),
               ],
-            ),
+            ) : const Center(
+              child: Text('Your Cart is Empty')),
         ),);
   }
 }

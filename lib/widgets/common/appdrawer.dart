@@ -50,8 +50,9 @@ class _AppDrawerState extends State<AppDrawer> {
                     width: 60,
                     height: 60,
                     child: CircleAvatar(
+                        radius: 20, 
                         backgroundColor: const Color(0xF352FFE2),
-                        child: Image.network(userData['profilePic'])),
+                        child: ClipOval(child: userData['profilePic'] != null ? Image.network(userData['profilePic']) : Image.asset('assets/images/Logo.png', )),)
                   ),
                   const SizedBox(
                     height: 22,
@@ -60,7 +61,7 @@ class _AppDrawerState extends State<AppDrawer> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                     child: Text(
-                      'Hey ${userData['username']}',
+                      'Hey, ${userData['username']}',
                       style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
@@ -71,10 +72,10 @@ class _AppDrawerState extends State<AppDrawer> {
                     height: 5,
                   ),
                   Padding(
-                    padding: EdgeInsets.fromLTRB(20, 0, 0, 10),
+                    padding: const EdgeInsets.fromLTRB(20, 0, 0, 10),
                     child: Text(
-                      'Your Location- Mumbai',
-                      style: TextStyle(color: Colors.white, fontSize: 12),
+                      userData['signin'] == 'phone' ? userData['phone'] : userData['email'],
+                      style: const TextStyle(color: Colors.white, fontSize: 12),
                     ),
                   ),
                   const SizedBox(

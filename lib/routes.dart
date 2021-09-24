@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'screens/phone_register.dart';
 import 'screens/success_screen.dart';
 import 'screens/cart_screen.dart';
 import 'screens/checkout_screen.dart';
@@ -24,5 +25,6 @@ final routes = {
   '/success': (BuildContext context) => const SuccessScreen(),
   '/products': (BuildContext context) => Products(productList: ModalRoute.of(context)!.settings.arguments),
   '/upload-prescription': (BuildContext context) => const UploadPrescriptionScreen(),
+  '/phone': (BuildContext context) => const PhoneRegisterScreen(), 
   '/checkout': (BuildContext context) => CheckoutScreen(ModalRoute.of(context)!.settings.arguments),
 };

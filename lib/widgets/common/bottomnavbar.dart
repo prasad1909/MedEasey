@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:med_easey/utils/popup.dart';
 
 class BottomNavBar extends StatefulWidget {
   final int index;
@@ -44,14 +45,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 Navigator.pushNamed(context, '/orders');
               }
             } else {
-              Fluttertoast.showToast(
-                  msg: "Kindly Login to view this page",
-                  toastLength: Toast.LENGTH_LONG,
-                  gravity: ToastGravity.BOTTOM,
-                  timeInSecForIosWeb: 4,
-                  backgroundColor: Colors.red,
-                  textColor: Colors.white,
-                  fontSize: 16.0);
+              popUp('Kindly Login to proceed');
             }
           } else if (value == 3) {
             if (user != null) {
@@ -61,15 +55,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 Navigator.pushNamed(context, '/profile');
               }
             } else {
-              Fluttertoast.showToast(
-                msg: "Kindly Login to view this page",
-                toastLength: Toast.LENGTH_LONG,
-                gravity: ToastGravity.BOTTOM,
-                timeInSecForIosWeb: 4,
-                backgroundColor: Colors.red,
-                textColor: Colors.white,
-                fontSize: 16.0
-            );
+              popUp('Kindly Login to proceed');
             }
           }
         }
