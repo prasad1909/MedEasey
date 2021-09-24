@@ -5,11 +5,13 @@ class CenterBox extends StatelessWidget {
 final header;
 final title;
 final subtitle;
+final image;
 
 CenterBox(
     this.header,
     this.title,
-    this.subtitle
+    this.subtitle,
+    this.image,
     );
 
 
@@ -30,7 +32,8 @@ CenterBox(
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Colors.white,
+                      color: Color(0xFF4FE79F),
+                      image: new DecorationImage(image:  new AssetImage(this.image),),
                     ),
                   ),
                   SizedBox(height: 10),

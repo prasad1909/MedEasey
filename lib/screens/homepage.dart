@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                CenterBox("Previous \nOrders", "Repeat Order", "Book Now"),
+                CenterBox("Previous \nOrders", "Repeat Order", "Book Now","assets/images/orderagain.png"),
                 GestureDetector(
                   onTap: () {
                     FlutterWebBrowser.openWebPage(
@@ -43,7 +43,7 @@ class HomePage extends StatelessWidget {
                     );
                   },
                   child: CenterBox("Covid \nVaccination", "#GetJabbed",
-                      "Book Your \nSlot Now"),
+                      "Book Your \nSlot Now","assets/images/vaccine2.png"),
                 )
               ],
             ),
