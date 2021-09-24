@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+
 class AppDrawer extends StatefulWidget {
   const AppDrawer({Key? key}) : super(key: key);
 
@@ -65,7 +66,7 @@ class _AppDrawerState extends State<AppDrawer> {
                       style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
-                          color: Colors.white),
+                          color: Colors.black45),
                     ),
                   ),
                   const SizedBox(
@@ -75,7 +76,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     padding: const EdgeInsets.fromLTRB(20, 0, 0, 10),
                     child: Text(
                       userData['signin'] == 'phone' ? userData['phone'] : userData['email'],
-                      style: const TextStyle(color: Colors.white, fontSize: 12),
+                      style: const TextStyle(color: Colors.black45, fontSize: 12),
                     ),
                   ),
                   const SizedBox(
@@ -98,7 +99,7 @@ class _AppDrawerState extends State<AppDrawer> {
                       Icons.login_rounded,
                     ),
                     onTap: () {
-                      Navigator.pushNamed(context, '/login');
+                      Navigator.pushNamed(context, '/aboutus');
                     },
                   ),
                   ListTile(

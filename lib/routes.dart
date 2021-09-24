@@ -14,6 +14,7 @@ import 'screens/login.dart';
 import 'screens/homepage.dart';
 import 'permission/location_permission.dart';
 import 'screens/intermediate.dart';
+import 'screens/about_us.dart';
 
 final routes = {
   '/': (BuildContext context) => const SplashScreen(),
@@ -31,4 +32,5 @@ final routes = {
   '/phone': (BuildContext context) => const PhoneRegisterScreen(), 
   '/checkout': (BuildContext context) => CheckoutScreen(ModalRoute.of(context)!.settings.arguments),
   '/intermediate': (BuildContext context) => const Intermediate(),
+  '/aboutus': (BuildContext context) => AboutUs(),
 };
