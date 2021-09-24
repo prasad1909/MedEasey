@@ -61,7 +61,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   height: 10,
                 ),
                 const Text(
-                  "Think Medicines? Think Medeasey",
+                  "Think Medicines? Think MedEasey",
                   style: TextStyle(fontSize: 20),
                 ),
                 const SizedBox(
