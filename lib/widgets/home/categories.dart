@@ -75,8 +75,7 @@ class _CategoriesState extends State<Categories> {
           ),
           CategoryCard(
             title: 'Medical Devices',
-            imgUrl:
-                "https://cdn.pixabay.com/photo/2019/12/22/04/18/x-mas-4711785__340.jpg",
+            imgUrl: "https://cdn.pixabay.com/photo/2019/12/22/04/18/x-mas-4711785__340.jpg",
             productsList: devices,
           ),
           const SizedBox(
