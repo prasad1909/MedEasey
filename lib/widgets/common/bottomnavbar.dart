@@ -73,10 +73,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
           label: 'Orders',
           icon: Icon(Icons.shopping_bag_outlined),
         ),
-        BottomNavigationBarItem(
-          label: 'Accounts',
-          icon: Icon(Icons.account_circle_rounded),
-        ),
+        // BottomNavigationBarItem(
+        //   label: 'Accounts',
+        //   icon: Icon(Icons.account_circle_rounded),
+        // ),
       ],
     );
   }
