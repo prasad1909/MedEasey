@@ -1,0 +1,268 @@
+[
+    {
+    "Brand Name": "3 Ply Masks (Pack of 5)",
+    "Generic Name": "3 Ply Masks",
+    "Company Name": "FaceProteckt",
+    "Price": 15,
+    "Category": "Covid Essentials"
+    },
+    {
+    "Brand Name": "2 Ply Masks (Pack of 5)",
+    "Generic Name": "2 Ply Masks",
+    "Company Name": "FaceProteckt",
+    "Price": 10,
+    "Category": "Covid Essentials"
+    },
+    {
+    "Brand Name": "N95 Masks ",
+    "Generic Name": "N 95 Masks",
+    "Company Name": "3M",
+    "Price": 199,
+    "Category": "Covid Essentials"
+    },
+    {
+    "Brand Name": "N99 Masks",
+    "Generic Name": "N 99 Masks",
+    "Company Name": "3M",
+    "Price": 399,
+    "Category": "Covid Essentials"
+    },
+    {
+    "Brand Name": "N95 Masks ",
+    "Generic Name": "N 95 Masks",
+    "Company Name": "Dettol",
+    "Price": 299,
+    "Category": "Covid Essentials"
+    },
+    {
+    "Brand Name": "500mL Sanitizer",
+    "Generic Name": "Alcohol based sanitizer liquid",
+    "Company Name": "Dettol",
+    "Price": 399,
+    "Category": "Covid Essentials"
+    },
+    {
+    "Brand Name": "1L Sanitizer",
+    "Generic Name": "Alcohol based sanitizer liquid",
+    "Company Name": "Dabur",
+    "Price": 499,
+    "Category": "Covid Essentials"
+    },
+    {
+    "Brand Name": "5L Viprotek",
+    "Generic Name": "Alcohol based sanitizer liquid",
+    "Company Name": "AsianPaints",
+    "Price": 1499,
+    "Category": "Covid Essentials"
+    },
+    {
+    "Brand Name": "10L Sanitizer",
+    "Generic Name": "Alcohol based sanitizer gel",
+    "Company Name": "Parle",
+    "Price": 2499,
+    "Category": "Covid Essentials"
+    },
+    {
+    "Brand Name": "100mL Sanitizer",
+    "Generic Name": "Alcohol based sanitizer gel",
+    "Company Name": "Lifebuoy",
+    "Price": 69,
+    "Category": "Covid Essentials"
+    },
+    {
+    "Brand Name": "Pulse Oximeter",
+    "Generic Name": "Pulse Oximeter",
+    "Company Name": "Dr Trust",
+    "Price": 1099,
+    "Category": "Medical Devices"
+    },
+    {
+    "Brand Name": "Blood Pressure Machine",
+    "Generic Name": "Blood Pressure Machine",
+    "Company Name": "Omron",
+    "Price": 1499,
+    "Category": "Medical Devices"
+    },
+    {
+    "Brand Name": "Stethoscope",
+    "Generic Name": "Stethoscope",
+    "Company Name": "3M",
+    "Price": 199,
+    "Category": "Medical Devices"
+    },
+    {
+    "Brand Name": "Glucometer",
+    "Generic Name": "Glucometer",
+    "Company Name": "AccuCheck",
+    "Price": 799,
+    "Category": "Medical Devices"
+    },
+    {
+    "Brand Name": "Thermometer",
+    "Generic Name": "Thermometer",
+    "Company Name": "Gen-X",
+    "Price": 49,
+    "Category": "Medical Devices"
+    },
+    {
+    "Brand Name": "Weighing Scale",
+    "Generic Name": "Weighing Scale",
+    "Company Name": "Dr Trust",
+    "Price": 499,
+    "Category": "Medical Devices"
+    },
+    {
+    "Brand Name": "Air Purifier",
+    "Generic Name": "Air Purifier",
+    "Company Name": "LG",
+    "Price": 2499,
+    "Category": "Medical Devices"
+    },
+    {
+    "Brand Name": "Nebulizer",
+    "Generic Name": "Nebulizer",
+    "Company Name": "Omron",
+    "Price": 1499,
+    "Category": "Medical Devices"
+    },
+    {
+    "Brand Name": "Pill Splitter",
+    "Generic Name": "Pill Splitter",
+    "Company Name": "Seniority",
+    "Price": 20,
+    "Category": "Medical Devices"
+    },
+    {
+    "Brand Name": "Walker",
+    "Generic Name": "Walker",
+    "Company Name": "Flamingo",
+    "Price": 3999,
+    "Category": "Medical Devices"
+    },
+    {
+    "Brand Name": "Granola Bars",
+    "Generic Name": "Energy Bar",
+    "Company Name": "Nature Valley",
+    "Price": 499,
+    "Category": "Nutrition and Fitness Suppliments"
+    },
+    {
+    "Brand Name": "Protein Powder",
+    "Generic Name": "Protein ",
+    "Company Name": "MusclePharm",
+    "Price": 2999,
+    "Category": "Nutrition and Fitness Suppliments"
+    },
+    {
+    "Brand Name": "Protein Bar",
+    "Generic Name": "Protein",
+    "Company Name": "RiteBite",
+    "Price": 299,
+    "Category": "Nutrition and Fitness Suppliments"
+    },
+    {
+    "Brand Name": "Gold Standard Whey",
+    "Generic Name": "Whey Protein",
+    "Company Name": "Optimum Nutriton",
+    "Price": 2499,
+    "Category": "Nutrition and Fitness Suppliments"
+    },
+    {
+    "Brand Name": "Hard Gainer Extreme",
+    "Generic Name": "Weight Gainer",
+    "Company Name": "MyProtein",
+    "Price": 3499,
+    "Category": "Nutrition and Fitness Suppliments"
+    },
+    {
+    "Brand Name": "Restoring Lotion",
+    "Generic Name": "Skin Lotion",
+    "Company Name": "Vaseline",
+    "Price": 299,
+    "Category": "Personal Care"
+    },
+    {
+    "Brand Name": "Skin Balance",
+    "Generic Name": "Skin Lotion",
+    "Company Name": "Lacto Calamine",
+    "Price": 199,
+    "Category": "Personal Care"
+    },
+    {
+    "Brand Name": "Hand Made Ayurvedic Soap",
+    "Generic Name": "Soap",
+    "Company Name": "Medimix",
+    "Price": 10,
+    "Category": "Personal Care"
+    },
+    {
+    "Brand Name": "Rich Moisture Shampoo",
+    "Generic Name": "Shampoo",
+    "Company Name": "TRESemme",
+    "Price": 399,
+    "Category": "Personal Care"
+    },
+    {
+    "Brand Name": "Damage Repair Protein Conditioner",
+    "Generic Name": "Conditioner",
+    "Company Name": "Himalaya",
+    "Price": 149,
+    "Category": "Personal Care"
+    },
+    {
+    "Brand Name": "Calpol",
+    "Generic Name": "Paracetamol 500",
+    "Company Name": "GSK",
+    "Price": 15,
+    "Category": "General Medication"
+    },
+    {
+    "Brand Name": "Allegra 120",
+    "Generic Name": "Fexofenadine 120",
+    "Company Name": "Sanofi",
+    "Price": 149,
+    "Category": "General Medication"
+    },
+    {
+    "Brand Name": "Pantocid 20",
+    "Generic Name": "Pantoprazole 20",
+    "Company Name": "Sun Pharma",
+    "Price": 79,
+    "Category": "General Medication"
+    },
+    {
+    "Brand Name": "Olmezest 20",
+    "Generic Name": "Olmesartan 20",
+    "Company Name": "Sun Pharma",
+    "Price": 99,
+    "Category": "General Medication"
+    },
+    {
+    "Brand Name": "Eltroxin 100",
+    "Generic Name": "Thyroxine 100",
+    "Company Name": "GSK",
+    "Price": 119,
+    "Category": "General Medication"
+    },
+    {
+    "Brand Name": "Larigo DS",
+    "Generic Name": "Chloroquine Phosphate 500",
+    "Company Name": "Ipca Labs",
+    "Price": 10,
+    "Category": "General Medication"
+    },
+    {
+    "Brand Name": "Brufen 400",
+    "Generic Name": "Ibuprofen 400",
+    "Company Name": "Abbott",
+    "Price": 10,
+    "Category": "General Medication"
+    },
+    {
+    "Brand Name": "Domstal",
+    "Generic Name": "Domperidone",
+    "Company Name": "Torrent Pharma",
+    "Price": 5,
+    "Category": "General Medication"
+    }
+]
