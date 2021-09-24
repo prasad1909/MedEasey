@@ -38,9 +38,11 @@ class _OrderScreenState extends State<OrderScreen> {
                     children: [
                       const SizedBox(height: 10,),
                       Container(
-                        width: 200,
-                        height: 100,
-                        color: Colors.greenAccent,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),color: Colors.greenAccent
+                        ),
+                        width: 340,
+                        height: 60,
                         child: Text(document['time'].toString()),
                       )
                     ],

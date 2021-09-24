@@ -76,79 +76,93 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.tealAccent,
-        appBar: const BasicAppbar(),
-        body: SizedBox(
-            height: MediaQuery.of(context).size.height,
-            child: products.isNotEmpty ? Column(
-              children: [
-                Expanded(
-                    child: ListView.builder(
-                     shrinkWrap: true,
-                     itemBuilder: (BuildContext context, int index) {
+      appBar: const BasicAppbar(),
+      body: SizedBox(
+        height: MediaQuery.of(context).size.height,
+        child: products.isNotEmpty
+            ? Column(
+                children: [
+                  Expanded(
+                      child: ListView.builder(
+                      shrinkWrap: true,
+                      itemBuilder: (BuildContext context, int index) {
                        var category = products[index]['Category'];
-            var imageName;
-            if (category == 'Covid Essentials') {
-              imageName = (index + 1).toString() + 'CE.png';
-            } else if (category == 'Personal Care') {
-              imageName = (index + 1).toString() + 'PC.png';
-            } else if (category == 'General Medication') {
-              imageName = (index + 1).toString() + 'GM.png';
-            } else if (category == 'Medical Devices') {
-              imageName = (index + 1).toString() + 'MD.png';
-            } else {
-              imageName = (index + 1).toString() + 'NS.png';
-            }
-                       return ProductCard(
-                        products[index]['Brand Name'],
-                        products[index]['Price'],
-                        imageName,
-                        callback: call);
-                    },
-                        itemCount: products.length,
-                )),
-                SizedBox(height: MediaQuery.of(context).size.height/50,),
-                Positioned(
-                  bottom: 40,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children:[
-                      Container(
-                        height: 40,
-                        width : MediaQuery.of(context).size.width/2.5,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          child: Text('₹ $total', style: TextStyle(fontSize:23, color: Colors.black, fontWeight: FontWeight.w300))),
-                      ElevatedButton(
-                          onPressed: () {
-                            if (user != null) {
-                            Navigator.pushNamed(context, '/checkout',
-                                arguments: total);
-                            } else {
-                              Fluttertoast.showToast(
-                  msg: "Kindly Login to proceed",
-                  toastLength: Toast.LENGTH_LONG,
-                  gravity: ToastGravity.BOTTOM,
-                  timeInSecForIosWeb: 4,
-                  backgroundColor: Colors.red,
-                  textColor: Colors.white,
-                  fontSize: 16.0);
-                            }
-                          },
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.greenAccent,
-                            fixedSize: Size(MediaQuery.of(context).size.width/2.5, 50),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
-                          ),
-                          child: const Text('Checkout  >', style: TextStyle(fontSize:21, color: Colors.black, fontWeight: FontWeight.bold)))
-                    ],
+                       var imageName;
+                       if (category == 'Covid Essentials') {
+                         imageName = (index + 1).toString() + 'CE.png';
+                       } else if (category == 'Personal Care') {
+                         imageName = (index + 1).toString() + 'PC.png';
+                       } else if (category == 'General Medication') {
+                         imageName = (index + 1).toString() + 'GM.png';
+                       } else if (category == 'Medical Devices') {
+                         imageName = (index + 1).toString() + 'MD.png';
+                       } else {
+                         imageName = (index + 1).toString() + 'NS.png';
+                      }
+                        return ProductCard(products[index]['Brand Name'],
+                          products[index]['Price'], imageName,
+                          callback: call);
+                      },
+                      itemCount: products.length,
+                  )),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height / 50,
                   ),
-                ),
-                SizedBox(height: MediaQuery.of(context).size.height/40,),
-              ],
-            ) : const Center(
-              child: Text('Your Cart is Empty')),
-        ),);
+                  Positioned(
+                    bottom: 40,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                            height: 40,
+                            width: MediaQuery.of(context).size.width / 2.5,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            child: Text('₹ $total',
+                                style: TextStyle(
+                                    fontSize: 23,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w300))),
+                        ElevatedButton(
+                            onPressed: () {
+                              if (user != null) {
+                                Navigator.pushNamed(context, '/checkout',
+                                    arguments: total);
+                              } else {
+                                Fluttertoast.showToast(
+                                    msg: "Kindly Login to proceed",
+                                    toastLength: Toast.LENGTH_LONG,
+                                    gravity: ToastGravity.BOTTOM,
+                                    timeInSecForIosWeb: 4,
+                                    backgroundColor: Colors.red,
+                                    textColor: Colors.white,
+                                    fontSize: 16.0);
+                              }
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.greenAccent,
+                              fixedSize: Size(
+                                  MediaQuery.of(context).size.width / 2.5, 50),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5.0)),
+                            ),
+                            child: const Text('Checkout  >',
+                                style: TextStyle(
+                                    fontSize: 21,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold)))
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height / 40,
+                  ),
+                ],
+              )
+            : const Center(child: Text('Your Cart is Empty')),
+      ),
+    );
   }
 }
