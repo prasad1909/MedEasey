@@ -17,8 +17,14 @@ class SuccessScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text('Your Order Has Been Placed',style: TextStyle(fontSize: 20), ),
-            const Text('Successfully',style: TextStyle(fontSize: 20),),
-            SizedBox(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Text('Successfully',style: TextStyle(fontSize: 20),),
+                Icon(Icons.assignment_turned_in_rounded, color: Colors.tealAccent.shade700,),
+              ],
+            ), SizedBox(
               width: 20,
               height: 20,
             ),
@@ -26,7 +32,7 @@ class SuccessScreen extends StatelessWidget {
             Icon(Icons.arrow_downward_outlined),
             ElevatedButton(
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.teal)
+                backgroundColor: MaterialStateProperty.all(Colors.tealAccent.shade700)
               ),
                 onPressed: () {
                   Navigator.pushNamed(context, '/orders');
