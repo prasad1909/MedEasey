@@ -38,7 +38,7 @@ class _AppDrawerState extends State<AppDrawer> {
   Widget build(BuildContext context) {
     return Theme(
       data: Theme.of(context).copyWith(
-        canvasColor: Color(0xFF09B191),
+        canvasColor: Color(0xFF09ECC3),
         //This will change the drawer background to blue.
         //other styles
       ),
@@ -127,15 +127,41 @@ class _AppDrawerState extends State<AppDrawer> {
                   const SizedBox(
                     height: 20,
                   ),
-                  ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/login');
-                      },
-                      child: const Text('Login')),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                          Padding(
+                            padding: const EdgeInsets.all(18.0),
+                            child: SizedBox(
+                              height: 40,
+                              width: 240,
+                              child: ElevatedButton(
+
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.blue,
+                                  elevation: 3,
+                                ),
+                                onPressed: () {
+                                Navigator.pushNamed(context, '/login',);
+                              },
+                               child: const Text('Login', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold,),),
+                              ),
+                            ),
+                          ),
+                        ],
+                  ),
                   const SizedBox(
                     height: 10,
                   ),
-                  const Text('Kindly Login to See All Features')
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+
+                      const Text('Kindly Login To See All Features', style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold, color: Colors.black45),),
+                    ],
+                  )
                 ],
               ),
       ),
