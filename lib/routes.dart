@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:med_easey/screens/forgot_password.dart';
 import 'screens/phone_register.dart';
 import 'screens/search_screen.dart';
 import 'screens/success_screen.dart';
@@ -33,4 +34,5 @@ final routes = {
   '/checkout': (BuildContext context) => CheckoutScreen(ModalRoute.of(context)!.settings.arguments),
   '/intermediate': (BuildContext context) => const Intermediate(),
   '/aboutus': (BuildContext context) => AboutUs(),
+  '/forgot': (BuildContext context) => const ForgotPassword(),
 };

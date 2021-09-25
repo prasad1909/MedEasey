@@ -150,10 +150,15 @@ class _LoginState extends State<Login> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        const Text(
-                          'Forgot Password?',
-                          style:
-                              TextStyle(fontSize: 15, color: Color(0xCE1F0226)),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, '/forgot');
+                          },
+                          child: const Text(
+                            'Forgot Password?',
+                            style: TextStyle(
+                                fontSize: 15, color: Color(0xCE1F0226)),
+                          ),
                         ),
                         SizedBox(
                           width: MediaQuery.of(context).size.width / 10,
@@ -182,9 +187,9 @@ class _LoginState extends State<Login> {
                                 Navigator.pushNamed(context, '/home');
                               } on FirebaseAuthException catch (e) {
                                 if (e.code == 'user-not-found') {
-                                  popUp('Email or Password does\'nt match');
+                                  popUp('Email or Password doesn\'t match');
                                 } else if (e.code == 'wrong-password') {
-                                  popUp('Email or Password does\'nt match');
+                                  popUp('Email or Password doesn\'t match');
                                 }
                               }
                             }
