@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
@@ -27,9 +28,8 @@ class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
           padding: const EdgeInsets.fromLTRB(0, 10, 150, 10),
           child: Text(
             "MedEasey",
-            style: TextStyle(
+            style: GoogleFonts.cinzelDecorative(
                 fontSize: 25,
-                fontStyle: FontStyle.italic,
                 color: Colors.black.withRed(1)),
           ),
         ),

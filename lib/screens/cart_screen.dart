@@ -148,7 +148,13 @@ class _CartScreenState extends State<CartScreen> {
                   ),
                 ],
               )
-            : const Center(child: Text('Your Cart is Empty')),
+            : Center(child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Text('Your Cart is Empty', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                Text('Please add some items', style: TextStyle(fontSize: 18, color: Color(0xFF808080)),)
+              ]
+            )),
       ),
     );
   }

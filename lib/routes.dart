@@ -19,7 +19,7 @@ import 'screens/about_us.dart';
 
 final routes = {
   '/': (BuildContext context) => const SplashScreen(),
-  '/home': (BuildContext context) => const HomePage(),
+  '/home': (BuildContext context) => HomePage(),
   '/register': (BuildContext context) => const Register(),
   '/login': (BuildContext context) => const Login(),
   '/cart': (BuildContext context) => const CartScreen(),
