@@ -67,7 +67,7 @@ class _CategoriesState extends State<Categories> {
           CategoryCard(
             title: 'Covid Essentials',
             imgUrl:
-                "https://cdn.pixabay.com/photo/2019/12/22/04/18/x-mas-4711785__340.jpg",
+                "image 1.png",
             productsList: covid,
           ),
           const SizedBox(
@@ -75,7 +75,7 @@ class _CategoriesState extends State<Categories> {
           ),
           CategoryCard(
             title: 'Medical Devices',
-            imgUrl: "https://cdn.pixabay.com/photo/2019/12/22/04/18/x-mas-4711785__340.jpg",
+            imgUrl: "image 2.png",
             productsList: devices,
           ),
           const SizedBox(
@@ -84,7 +84,7 @@ class _CategoriesState extends State<Categories> {
           CategoryCard(
             title: 'Nutrition & Fitness Suppliments',
             imgUrl:
-                "https://cdn.pixabay.com/photo/2019/12/22/04/18/x-mas-4711785__340.jpg",
+                "image 3.png",
             productsList: nutriton,
           ),
           const SizedBox(
@@ -93,7 +93,7 @@ class _CategoriesState extends State<Categories> {
           CategoryCard(
             title: 'Personal Care',
             imgUrl:
-                "https://cdn.pixabay.com/photo/2019/12/22/04/18/x-mas-4711785__340.jpg",
+                "image 4.jpeg",
             productsList: personal,
           ),
           const SizedBox(
@@ -102,7 +102,7 @@ class _CategoriesState extends State<Categories> {
           CategoryCard(
             title: 'General Medication',
             imgUrl:
-                "https://cdn.pixabay.com/photo/2019/12/22/04/18/x-mas-4711785__340.jpg",
+                "image 5.png",
             productsList: daily,
           ),
           const SizedBox(

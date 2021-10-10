@@ -20,8 +20,8 @@ class _OrderScreenState extends State<OrderScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: BasicAppbar(),
-        bottomNavigationBar: BottomNavBar(2),
+        appBar: const BasicAppbar(),
+        bottomNavigationBar: const BottomNavBar(2),
         body: StreamBuilder<QuerySnapshot>(
             stream: FirebaseFirestore.instance
                 .collection('orders')
@@ -42,8 +42,9 @@ class _OrderScreenState extends State<OrderScreen> {
                   var keys = items.keys.toList();
                   for (var i = 0; i < keys.length; i++) {
                     var spaces = '';
-                    for (var j = 0; j < 50 - keys[i].length; j++) {
-                      spaces += '';
+                    print(keys[i].length);
+                    for (var j = 0; j < 40 - keys[i].length; j++) {
+                      spaces += ' ';
                     }
                     text += ' ' +
                         keys[i] +

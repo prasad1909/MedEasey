@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class CategoryCard extends StatelessWidget {
   final String title;
@@ -23,18 +20,23 @@ class CategoryCard extends StatelessWidget {
           child: Stack(children: [
             ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(5.0)),
-              child: Image.network(imgUrl, fit: BoxFit.cover, width: 1000.0),
+              child: Image.asset('assets/Products/$imgUrl', width: 200, height: 120,),
             ),
             Center(
               child: Container(
-                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                child: Text(
-                  title,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
+                padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                child: Container(
+                  
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Colors.white,),
+                  child: Text(
+                    title,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                    )
+                  ),
                 ),
               ),
             ),
