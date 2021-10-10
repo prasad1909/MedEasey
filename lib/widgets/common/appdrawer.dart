@@ -39,7 +39,7 @@ class _AppDrawerState extends State<AppDrawer> {
   Widget build(BuildContext context) {
     return Theme(
       data: Theme.of(context).copyWith(
-        canvasColor: Color(0xFF09ECC3),
+        canvasColor: Color(0xFF56DAF1),
         //This will change the drawer background to blue.
         //other styles
       ),
@@ -52,7 +52,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     height: 60,
                     child: CircleAvatar(
                         radius: 20, 
-                        backgroundColor: const Color(0xF352FFE2),
+                        backgroundColor: const Color(0xF342E5B1),
                         child: ClipOval(child: userData['profilePic'] != null ? Image.network(userData['profilePic']) : Image.asset('assets/images/Logo.png', )),)
                   ),
                   const SizedBox(
@@ -83,7 +83,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     height: 3,
                   ),
                   ListTile(
-                    tileColor: const Color(0xF352FFE2),
+                    tileColor: Colors.blue,
                     title: const Text('Your Orders'),
                     trailing: const Icon(
                       Icons.add_to_home_screen,
@@ -93,7 +93,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     },
                   ),
                   ListTile(
-                    tileColor: Colors.lightBlueAccent,
+                    tileColor: Color(0xF342BFE5),
                     title: const Text('About Us'),
                     trailing: const Icon(
                       Icons.login_rounded,
@@ -103,7 +103,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     },
                   ),
                   ListTile(
-                    tileColor: const Color(0xF352FFE2),
+                    tileColor: Colors.blue,
                     title: const Text('Contact Us'),
                     trailing: const Icon(
                       Icons.payment_rounded,
@@ -111,7 +111,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     onTap: () {},
                   ),
                   ListTile(
-                    tileColor: Colors.lightBlueAccent,
+                    tileColor:Color(0xF342BFE5),
                     title: const Text('Logout'),
                     trailing: const Icon(
                       Icons.logout_rounded,

@@ -56,8 +56,8 @@ class _UploadPrescriptionScreenState extends State<UploadPrescriptionScreen> {
                     begin: Alignment.bottomCenter,
                     end: Alignment.topLeft,
                     colors:[
-                      Color(0xFF5CFAC8),
-                      Color(0xFF1CE08F),
+                      Color(0xFF12EFDB),
+                      Color(0xFF32B4DC),
                     ],
                   ),
                 ),

@@ -32,7 +32,7 @@ CenterBox(
                     width: 40,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: Color(0xFF4FE79F),
+                      color: Color(0xFF37F3F3),
                       image: new DecorationImage(image:  new AssetImage(this.image),),
                     ),
                   ),
@@ -75,7 +75,7 @@ CenterBox(
                 end: Alignment.bottomLeft,
                 colors:[
                   Color(0xFF3EFFC8),
-                  Color(0xFF19B675),
+                  Color(0xFF2094CD),
                 ],
               ),
             ),);

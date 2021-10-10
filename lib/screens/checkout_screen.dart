@@ -107,202 +107,243 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF669FDC),
       resizeToAvoidBottomInset: false,
       appBar: const BasicAppbar(),
       body: Column(
-          children: [
-        SizedBox(
-          height: MediaQuery.of(context).size.height/40,
-        ),
-        const Text('Location Details',
-        textAlign: TextAlign.start,
-        style: TextStyle(color: Colors.black,
-          fontWeight: FontWeight.w700,
-          fontSize: 20,
-        ),),
-        SizedBox(
-          height: MediaQuery.of(context).size.height/100,
-        ),
-        Container(
-            margin: const EdgeInsets.all(10),
-            width: MediaQuery.of(context).size.width/1.2,
-            height: MediaQuery.of(context).size.height/6,
-            decoration: BoxDecoration(
-              color:Colors.greenAccent.shade100,
-              borderRadius: BorderRadius.circular(10),
+        children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 40,
+          ),
+          const Text(
+            'Location Details',
+            textAlign: TextAlign.start,
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.w700,
+              fontSize: 20,
             ),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.height/80,
-                ),
-                isEditing
-                    ? Container(
-                    width: MediaQuery.of(context).size.width/1.2,
-                    height: MediaQuery.of(context).size.height/7,
-                    child: TextFormField(
-                      autofocus: true,
-                      style: TextStyle(fontSize: 20),
-                        maxLines: 4,
-                        controller: addressController,
-                        decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          contentPadding: EdgeInsets.all(10),
-                        )))
-                    : Row(
-                  children:[
-                    SizedBox(width: MediaQuery.of(context).size.width/20,),
-                    Text(address,
-                      style: TextStyle(fontSize: 20),
-                    ),
-                  ],
-                )
-              ],
-            )),
-        Row(
-          children:[
-            SizedBox(width: MediaQuery.of(context).size.width/1.3,),
-            ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  fixedSize: const Size(50, 50),
-                  shape: const CircleBorder(),
-                  elevation: 2.0,
-                ),
-                onPressed: () {
-                  if (isEditing) {
-                    setState(() {
-                      address = addressController.text;
-                      isEditing = false;
-                    });
-                  } else {
-                    setState(() {
-                      addressController.text = address;
-                      isEditing = true;
-                    });
-                  }
-                },
-                child: isEditing
-                //? const Text('Save Address')
-                    ? const Icon(Icons.check, color: Colors.white,)
-                    : const Icon(Icons.create_rounded, color: Colors.white,)),
-          ],
-        ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height/100,
-        ),
-            const Text('Select Payment Mode',
-              textAlign: TextAlign.start,
-              style: TextStyle(color: Colors.black,
-                fontWeight: FontWeight.w700,
-                fontSize: 20,
-              ),),
-        SizedBox(
-            height: MediaQuery.of(context).size.height/120
-        ),
-        Container(
-            margin: const EdgeInsets.all(10),
-            padding: EdgeInsets.all(10),
-            width: MediaQuery.of(context).size.width/1.2,
-            height: MediaQuery.of(context).size.height/8,
-            decoration: BoxDecoration(
-              color: Colors.greenAccent,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Row(children: [
-                const SizedBox(
-                  width: 10,
-                ),
-                GFRadio(
-                  size: GFSize.SMALL,
-                  value: 0,
-                  groupValue: paymentValue,
-                  onChanged: (int value) {
-                    setState(() {
-                      paymentValue = value;
-                    });
-                  },
-                  inactiveIcon: null,
-                  activeBorderColor: GFColors.SUCCESS,
-                  radioColor: GFColors.SUCCESS,
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                const Text('Cash On Delivery', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),)
-              ]),
-              const SizedBox(
-                height: 10,
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 100,
+          ),
+          Container(
+              margin: const EdgeInsets.all(10),
+              width: MediaQuery.of(context).size.width / 1.2,
+              height: MediaQuery.of(context).size.height / 6,
+              decoration: BoxDecoration(
+                color: Color(0xFF5CE1FF),
+                borderRadius: BorderRadius.circular(10),
               ),
-              Row(children: [
-                const SizedBox(
-                  width: 10,
-                ),
-                GFRadio(
-                  size: GFSize.SMALL,
-                  value: 1,
-                  groupValue: paymentValue,
-                  onChanged: (int value) {
-                    setState(() {
-                      paymentValue = value;
-                    });
-                  },
-                  inactiveIcon: null,
-                  activeBorderColor: GFColors.SUCCESS,
-                  radioColor: GFColors.SUCCESS,
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                const Text('RazorPay', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),)
-              ]),
-            ])),
-            SizedBox(height: MediaQuery.of(context).size.height/5),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              child: Column(
                 children: [
                   SizedBox(
-                    width: MediaQuery.of(context).size.width/15,
+                    height: MediaQuery.of(context).size.height / 80,
                   ),
-                  Text('₹ ${widget.price}', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-                        fixedSize: Size(MediaQuery.of(context).size.width/1.7,
-                            MediaQuery.of(context).size.height/15),
-                        elevation: 2.0,
-                      ),
-                      onPressed: () async {
-                        if (paymentValue == 1) {
-                          _razorpay.open({
-                            'key': 'rzp_test_VOOdqc5o5o3nF0',
-                            'amount': widget.price * 100,
-                            'name': 'MedEasey',
-                            'description': 'Meds',
-                            'retry': {'enabled': true, 'max_count': 1},
-                            'send_sms_hash': true,
-                            'prefill': {'email': user!.email},
-                            'external': {
-                              'wallets': ['paytm']
-                            }
-                          });
-                        }
-                        await FirebaseFirestore.instance
-                            .collection('orders')
-                            .add({'uid': user!.uid, 'items': products, 'paymentType': paymentValue, 'address': address, 'price': widget.price, 'time': DateTime.now().millisecondsSinceEpoch});
-                        await clearCart();
-                        Navigator.popAndPushNamed(context, '/intermediate');
-                      },
-                      child: const Text('Continue', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),)),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width/15,
-                  ),
+                  isEditing
+                      ? Container(
+                          width: MediaQuery.of(context).size.width / 1.2,
+                          height: MediaQuery.of(context).size.height / 7,
+                          child: TextFormField(
+                              autofocus: true,
+                              style: TextStyle(fontSize: 20),
+                              maxLines: 4,
+                              controller: addressController,
+                              decoration: const InputDecoration(
+                                border: InputBorder.none,
+                                contentPadding: EdgeInsets.all(10),
+                              )))
+                      : Row(
+                          children: [
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width / 20,
+                            ),
+                            Text(
+                              address,
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ],
+                        )
                 ],
+              )),
+          Row(
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 1.3,
               ),
-            SizedBox(height: MediaQuery.of(context).size.height/30),
+              ElevatedButton(
+
+                  style: ElevatedButton.styleFrom(
+
+                    fixedSize: const Size(50, 50),
+                    shape: const CircleBorder(),
+                    primary: Color(0xFF6CCEFF),
+                    elevation: 2.0,
+                  ),
+                  onPressed: () {
+                    if (isEditing) {
+                      setState(() {
+                        address = addressController.text;
+                        isEditing = false;
+                      });
+                    } else {
+                      setState(() {
+                        addressController.text = address;
+                        isEditing = true;
+                      });
+                    }
+                  },
+                  child: isEditing
+                      //? const Text('Save Address')
+                      ? const Icon(
+                          Icons.check,
+                          color: Colors.white,
+                        )
+                      : const Icon(
+                          Icons.create_rounded,
+                          color: Colors.white,
+                        )),
             ],
-        ),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 100,
+          ),
+          const Text(
+            'Select Payment Mode',
+            textAlign: TextAlign.start,
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.w700,
+              fontSize: 20,
+            ),
+          ),
+          SizedBox(height: MediaQuery.of(context).size.height / 120),
+          Container(
+              margin: const EdgeInsets.all(10),
+              padding: EdgeInsets.all(10),
+              width: MediaQuery.of(context).size.width / 1.2,
+              height: MediaQuery.of(context).size.height / 8,
+              decoration: BoxDecoration(
+                color: Color(0xFF5CE1FF),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(children: [
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      GFRadio(
+                        size: GFSize.SMALL,
+                        value: 0,
+                        groupValue: paymentValue,
+                        onChanged: (int value) {
+                          setState(() {
+                            paymentValue = value;
+                          });
+                        },
+                        inactiveIcon: null,
+                        activeBorderColor: GFColors.SUCCESS,
+                        radioColor: GFColors.SUCCESS,
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      const Text(
+                        'Cash On Delivery',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500, fontSize: 20),
+                      )
+                    ]),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(children: [
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      GFRadio(
+                        size: GFSize.SMALL,
+                        value: 1,
+                        groupValue: paymentValue,
+                        onChanged: (int value) {
+                          setState(() {
+                            paymentValue = value;
+                          });
+                        },
+                        inactiveIcon: null,
+                        activeBorderColor: GFColors.SUCCESS,
+                        radioColor: GFColors.SUCCESS,
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      const Text(
+                        'RazorPay',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500, fontSize: 20),
+                      )
+                    ]),
+                  ])),
+          SizedBox(height: MediaQuery.of(context).size.height / 5),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 15,
+              ),
+              Text(
+                '₹ ${widget.price}',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),
+              ),
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Color(0xFF6CCEFF),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0)),
+                    fixedSize: Size(MediaQuery.of(context).size.width / 1.7,
+                        MediaQuery.of(context).size.height / 15),
+                    elevation: 2.0,
+                  ),
+                  onPressed: () async {
+                    if (paymentValue == 1) {
+                      _razorpay.open({
+                        'key': 'rzp_test_VOOdqc5o5o3nF0',
+                        'amount': widget.price * 100,
+                        'name': 'MedEasey',
+                        'description': 'Meds',
+                        'retry': {'enabled': true, 'max_count': 1},
+                        'send_sms_hash': true,
+                        'prefill': {'email': user!.email},
+                        'external': {
+                          'wallets': ['paytm']
+                        }
+                      });
+                    }
+                    await FirebaseFirestore.instance.collection('orders').add({
+                      'uid': user!.uid,
+                      'items': products,
+                      'paymentType': paymentValue,
+                      'address': address,
+                      'price': widget.price,
+                      'time': DateTime.now().millisecondsSinceEpoch
+                    });
+                    await clearCart();
+                    Navigator.popAndPushNamed(context, '/intermediate');
+                  },
+                  child: const Text(
+                    'Continue',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),
+                  )),
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 15,
+              ),
+            ],
+          ),
+          SizedBox(height: MediaQuery.of(context).size.height / 30),
+        ],
+      ),
     );
   }
 }

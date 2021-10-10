@@ -14,8 +14,8 @@ class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
         decoration: const BoxDecoration(
           gradient: LinearGradient(
               colors: [
-                Color(0xFF01D2A1),
-                Color(0xFF55EF9C),
+                Color(0xFF2C8EE3),
+                Color(0xFF40E7D0),
               ],
               begin: FractionalOffset(0.0, 0.0),
               end: FractionalOffset(1.0, 0.0),

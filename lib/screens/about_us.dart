@@ -28,7 +28,7 @@ class AboutUs extends StatelessWidget {
                   width: 310,
                   height: 125,
                   decoration: BoxDecoration(
-                      color: Color(0xFF80FF9C),
+                      color: Color(0xFF80FFFF),
                       border: Border.all(
                         width: 1,
                         color: Colors.teal,
@@ -108,7 +108,7 @@ class AboutUs extends StatelessWidget {
                   width: 310,
                   height: 125,
                   decoration: BoxDecoration(
-                      color: Color(0xFF80FF9C),
+                      color: Color(0xFF80FFFB),
                       border: Border.all(
                         width: 1,
                         color: Colors.teal,
@@ -188,7 +188,7 @@ class AboutUs extends StatelessWidget {
                   width: 310,
                   height: 125,
                   decoration: BoxDecoration(
-                      color: Color(0xFF80FF9C),
+                      color: Color(0xFF80FFFB),
                       border: Border.all(
                         width: 1,
                         color: Colors.teal,

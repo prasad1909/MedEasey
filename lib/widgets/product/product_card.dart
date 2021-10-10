@@ -146,7 +146,7 @@ class _ProductCardState extends State<ProductCard> {
                                   },
                                   child: const Icon(Icons.remove),
                                   style: ElevatedButton.styleFrom(
-                                    primary: Colors.greenAccent,
+                                    primary: Color(0xFF3BD8F6),
                                     fixedSize: const Size(20, 15),
                                     shape: const CircleBorder(),
                                     textStyle: const TextStyle(color: Colors.teal),
@@ -164,7 +164,7 @@ class _ProductCardState extends State<ProductCard> {
                                   },
                                   child: const Icon(Icons.add),
                                   style: ElevatedButton.styleFrom(
-                                    primary: Colors.greenAccent,
+                                    primary: Color(0xFF3BD8F6),
                                     fixedSize: const Size(20, 15),
                                     shape: const CircleBorder(),
                                   ),
