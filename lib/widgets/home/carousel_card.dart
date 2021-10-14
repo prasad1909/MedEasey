@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class CarouselCard extends StatelessWidget {
 
-  final url, title;
-  CarouselCard(this.url, this.title);
+  final String url, title;
+  const CarouselCard(this.url, this.title, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,15 +13,15 @@ class CarouselCard extends StatelessWidget {
         child:Stack(children: [
           ClipRRect(
             borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-            child: Image.network(this.url, fit: BoxFit.cover,),
+            child: Image.network(url, fit: BoxFit.cover,),
           ),
           Center(
             child: Container(
-              padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: Text(
-                this.title,
+                title,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
                     color: Colors.white),

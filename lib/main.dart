@@ -40,7 +40,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(),
+      appBar: const BasicAppbar(),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(

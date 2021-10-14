@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +40,6 @@ class _OrderScreenState extends State<OrderScreen> {
                   var keys = items.keys.toList();
                   for (var i = 0; i < keys.length; i++) {
                     var spaces = '';
-                    print(keys[i].length);
                     for (var j = 0; j < 40 - keys[i].length; j++) {
                       spaces += ' ';
                     }

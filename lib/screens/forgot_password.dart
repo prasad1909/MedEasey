@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:med_easey/utils/popup.dart';
@@ -83,7 +82,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                               popUp('Any email has been sent to you');
                               Navigator.pop(context);
                             } catch (e) {
-                              print(e);
                               popUp('Something went wrong, please try again');
                             }
                           },

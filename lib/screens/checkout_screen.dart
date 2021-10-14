@@ -8,7 +8,7 @@ import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CheckoutScreen extends StatefulWidget {
-  final price;
+  final int price;
   const CheckoutScreen(this.price, {Key? key}) : super(key: key);
 
   @override
@@ -107,7 +107,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF669FDC),
+      backgroundColor: const Color(0xFF669FDC),
       resizeToAvoidBottomInset: false,
       appBar: const BasicAppbar(),
       body: Column(
@@ -132,7 +132,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               width: MediaQuery.of(context).size.width / 1.2,
               height: MediaQuery.of(context).size.height / 6,
               decoration: BoxDecoration(
-                color: Color(0xFF5CE1FF),
+                color: const Color(0xFF5CE1FF),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Column(
@@ -141,12 +141,12 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     height: MediaQuery.of(context).size.height / 80,
                   ),
                   isEditing
-                      ? Container(
+                      ? SizedBox(
                           width: MediaQuery.of(context).size.width / 1.2,
                           height: MediaQuery.of(context).size.height / 7,
                           child: TextFormField(
                               autofocus: true,
-                              style: TextStyle(fontSize: 20),
+                              style: const TextStyle(fontSize: 20),
                               maxLines: 4,
                               controller: addressController,
                               decoration: const InputDecoration(
@@ -160,7 +160,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             ),
                             Text(
                               address,
-                              style: TextStyle(fontSize: 20),
+                              style: const TextStyle(fontSize: 20),
                             ),
                           ],
                         )
@@ -177,7 +177,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
                     fixedSize: const Size(50, 50),
                     shape: const CircleBorder(),
-                    primary: Color(0xFF6CCEFF),
+                    primary: const Color(0xFF6CCEFF),
                     elevation: 2.0,
                   ),
                   onPressed: () {
@@ -220,11 +220,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           SizedBox(height: MediaQuery.of(context).size.height / 120),
           Container(
               margin: const EdgeInsets.all(10),
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               width: MediaQuery.of(context).size.width / 1.2,
               height: MediaQuery.of(context).size.height / 8,
               decoration: BoxDecoration(
-                color: Color(0xFF5CE1FF),
+                color: const Color(0xFF5CE1FF),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Column(
@@ -295,11 +295,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               ),
               Text(
                 '₹ ${widget.price}',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 23),
               ),
               ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Color(0xFF6CCEFF),
+                    primary: const Color(0xFF6CCEFF),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0)),
                     fixedSize: Size(MediaQuery.of(context).size.width / 1.7,

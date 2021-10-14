@@ -20,19 +20,19 @@ class SuccessScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const Text('Successfully',style: TextStyle(fontSize: 20),),
+              children: const [
+                Text('Successfully',style: TextStyle(fontSize: 20),),
                 Icon(Icons.assignment_turned_in_rounded, color: Color(0xFF4A4AFF),),
               ],
-            ), SizedBox(
+            ), const SizedBox(
               width: 20,
               height: 20,
             ),
             const Text('Track Your Order Details Below',style: TextStyle(fontSize: 15),),
-            Icon(Icons.arrow_downward_outlined),
+            const Icon(Icons.arrow_downward_outlined),
             ElevatedButton(
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Color(0xFF4A4AFF))
+                backgroundColor: MaterialStateProperty.all(const Color(0xFF4A4AFF))
               ),
                 onPressed: () {
                   Navigator.pushNamed(context, '/orders');

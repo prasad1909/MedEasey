@@ -28,9 +28,7 @@ class _SearchScreenState extends State<SearchScreen> {
     final String response =
         await rootBundle.loadString('assets/data/FinalData.json');
     final data = await json.decode(response);
-    print(data.length);
     for (var i = 0; i < data.length; i++) {
-      print(l.contains(data[i]['Brand Name']));
       if (!l.contains(data[i]['Brand Name'])) {
         l.add(data[i]['Brand Name']);
       }
@@ -42,7 +40,6 @@ class _SearchScreenState extends State<SearchScreen> {
       namelist = l;
       productList = data;
     });
-    print(namelist);
   }
 
   @override
@@ -92,17 +89,14 @@ class _SearchScreenState extends State<SearchScreen> {
                           queryValue.toLowerCase()) >
                       0.5) {
                     try {
-                      print(namelist[index]);
-                      var product;
+                      var product = {};
                       try {
                         product = productList.firstWhere(
                             (e) => e['Brand Name'] == namelist[index]);
                       } catch (e) {
-                        print('error');
                         product = productList.firstWhere(
                             (e) => e['Generic Name'] == namelist[index]);
                       }
-                      print(product);
                       return ProductCard(
                           product['Brand Name'], product['Price'], product['Image Name']);
                     } catch (e) {

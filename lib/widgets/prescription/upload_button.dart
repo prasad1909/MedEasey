@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,6 @@ class _UploadButtonState extends State<UploadButton> {
     final data = await json.decode(response);
     SharedPreferences preferences = await SharedPreferences.getInstance();
     for (var i = 0; i < data.length; i++) {
-      print(l.contains(data[i]['Brand Name']));
       if (!l.contains(data[i]['Brand Name'])) {
         l.add(data[i]['Brand Name']);
       }
@@ -71,7 +71,7 @@ class _UploadButtonState extends State<UploadButton> {
                   await PDFDoc.fromPath(filePickerResult.files.single.path!);
               String pdfText = await _pdfDoc.text;
               UploadPrescriptionScreen.of(context)!.isUp = true;
-              UploadPrescriptionScreen.of(context)!.imageBytes = null;
+              UploadPrescriptionScreen.of(context)!.imageBytes = Uint8List(0);
               await addToCart(pdfText);
             }
           }

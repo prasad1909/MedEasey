@@ -22,7 +22,7 @@ class _AppDrawerState extends State<AppDrawer> {
   }
 
   bool isLoggedin = false;
-  var userData;
+  var userData = {};
 
   Future getUser() async {
     final userCred = await FirebaseFirestore.instance
@@ -39,7 +39,7 @@ class _AppDrawerState extends State<AppDrawer> {
   Widget build(BuildContext context) {
     return Theme(
       data: Theme.of(context).copyWith(
-        canvasColor: Color(0xFF56DAF1),
+        canvasColor: const Color(0xFF56DAF1),
         //This will change the drawer background to blue.
         //other styles
       ),
@@ -93,7 +93,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     },
                   ),
                   ListTile(
-                    tileColor: Color(0xF342BFE5),
+                    tileColor: const Color(0xF342BFE5),
                     title: const Text('About Us'),
                     trailing: const Icon(
                       Icons.login_rounded,
@@ -111,7 +111,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     onTap: () {},
                   ),
                   ListTile(
-                    tileColor:Color(0xF342BFE5),
+                    tileColor: const Color(0xF342BFE5),
                     title: const Text('Logout'),
                     trailing: const Icon(
                       Icons.logout_rounded,
@@ -158,9 +158,8 @@ class _AppDrawerState extends State<AppDrawer> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-
-                      const Text('Kindly Login To See All Features', style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold, color: Colors.black45),),
+                    children: const [
+                      Text('Kindly Login To See All Features', style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold, color: Colors.black45),),
                     ],
                   )
                 ],

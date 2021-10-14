@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class CenterHeader extends StatelessWidget {
+  const CenterHeader({Key? key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.fromLTRB(22,0,22,0),
+        padding: const EdgeInsets.fromLTRB(22,0,22,0),
         child: Row(
           children: [
             Expanded(
@@ -25,7 +27,7 @@ class CenterHeader extends StatelessWidget {
                             children: [
                               Container(
                                 padding: const EdgeInsets.fromLTRB(0, 0, 40, 10),
-                                child: Text(
+                                child: const Text(
                                   'Shop By Category',
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,

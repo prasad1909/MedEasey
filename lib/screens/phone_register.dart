@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:med_easey/utils/popup.dart';
 
 class PhoneRegisterScreen extends StatefulWidget {
   const PhoneRegisterScreen({Key? key}) : super(key: key);
@@ -113,8 +114,7 @@ class _PhoneRegisterScreenState extends State<PhoneRegisterScreen> {
                               },
                               verificationFailed: (FirebaseAuthException e) {
                                 if (e.code == 'invalid-phone-number') {
-                                  print(
-                                      'The provided phone number is not valid.');
+                                  popUp('Invalid Phone Number');
                                 }
                               },
                               codeSent: (String verificationId,
@@ -134,10 +134,11 @@ class _PhoneRegisterScreenState extends State<PhoneRegisterScreen> {
                                             ],
                                           ),
                                           actions: <Widget>[
-                                            FlatButton(
-                                              child: const Text("Submit"),
-                                              textColor: Colors.white,
-                                              color: Colors.redAccent,
+                                            TextButton(
+                                              style: TextButton.styleFrom(
+                                                primary: Colors.redAccent
+                                              ),
+                                              child: const Text("Submit", style: TextStyle(color: Colors.white),),
                                               onPressed: () async {
                                                 var smsCode = otp.text.trim();
 
@@ -148,20 +149,24 @@ class _PhoneRegisterScreenState extends State<PhoneRegisterScreen> {
                                                                 verificationId,
                                                             smsCode: smsCode);
 
-                                                print(_credential);
-
                                                 final userCred =
                                                     await FirebaseAuth.instance
                                                         .signInWithCredential(
                                                             _credential);
 
-                                                final userInFirestore = await FirebaseFirestore.instance
-                                                .collection('users')
-                                                .where('uid', isEqualTo: userCred.user!.uid)
-                                                .get();
+                                                final userInFirestore =
+                                                    await FirebaseFirestore
+                                                        .instance
+                                                        .collection('users')
+                                                        .where('uid',
+                                                            isEqualTo: userCred
+                                                                .user!.uid)
+                                                        .get();
 
-                                                if(userInFirestore.docs.isEmpty) {
-                                                  await FirebaseFirestore.instance
+                                                if (userInFirestore
+                                                    .docs.isEmpty) {
+                                                  await FirebaseFirestore
+                                                      .instance
                                                       .collection('users')
                                                       .add({
                                                     'signin': 'phone',
@@ -169,8 +174,9 @@ class _PhoneRegisterScreenState extends State<PhoneRegisterScreen> {
                                                     'uid': userCred.user!.uid,
                                                     'phone': phone.text
                                                   });
-                                                }            
-                                                Navigator.pushNamed(context, '/home');
+                                                }
+                                                Navigator.pushNamed(
+                                                    context, '/home');
                                               },
                                             )
                                           ],

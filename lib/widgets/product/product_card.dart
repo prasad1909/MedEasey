@@ -5,7 +5,7 @@ class ProductCard extends StatefulWidget {
   final String title;
   final int price;
   final String image;
-  final callback;
+  final Function? callback;
 
   const ProductCard(this.title, this.price, this.image,
       {Key? key, this.callback})
@@ -49,7 +49,7 @@ class _ProductCardState extends State<ProductCard> {
     });
     await preferences.setInt(widget.title, quantity);
     if (widget.callback != null) {
-      widget.callback();
+      widget.callback!();
     }
   }
 
@@ -64,7 +64,7 @@ class _ProductCardState extends State<ProductCard> {
       await preferences.setInt(widget.title, quantity);
     }
     if (widget.callback != null) {
-      widget.callback();
+      widget.callback!();
     }
   }
 
@@ -146,7 +146,7 @@ class _ProductCardState extends State<ProductCard> {
                                   },
                                   child: const Icon(Icons.remove),
                                   style: ElevatedButton.styleFrom(
-                                    primary: Color(0xFF3BD8F6),
+                                    primary: const Color(0xFF3BD8F6),
                                     fixedSize: const Size(20, 15),
                                     shape: const CircleBorder(),
                                     textStyle: const TextStyle(color: Colors.teal),
@@ -164,7 +164,7 @@ class _ProductCardState extends State<ProductCard> {
                                   },
                                   child: const Icon(Icons.add),
                                   style: ElevatedButton.styleFrom(
-                                    primary: Color(0xFF3BD8F6),
+                                    primary: const Color(0xFF3BD8F6),
                                     fixedSize: const Size(20, 15),
                                     shape: const CircleBorder(),
                                   ),
@@ -172,8 +172,7 @@ class _ProductCardState extends State<ProductCard> {
                               ],
                             )
 
-                          : Container(
-                        child: Row(
+                          : Row(
                           //mainAxisAlignment: MainAxisAlignment.end,
                           //crossAxisAlignment: CrossAxisAlignment.end,
                           children:[
@@ -188,7 +187,7 @@ class _ProductCardState extends State<ProductCard> {
                                 color: Colors.black,
                               ),
                               style: ElevatedButton.styleFrom(
-                                primary: Colors.greenAccent,
+                                primary: const Color(0xFF3BD8F6),
                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
                                 fixedSize: const Size(20, 40),
                                 elevation: 2.0,
@@ -196,8 +195,7 @@ class _ProductCardState extends State<ProductCard> {
                             ),
                             SizedBox(width: MediaQuery.of(context).size.width/30),
                           ],
-                        ),
-                      ),
+                        )
                     ],
                   ),
                 ],

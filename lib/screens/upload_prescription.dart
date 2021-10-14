@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:med_easey/widgets/common/bottomnavbar.dart';
 import '../widgets/common/appbar.dart';
@@ -16,7 +18,7 @@ class UploadPrescriptionScreen extends StatefulWidget {
 
 class _UploadPrescriptionScreenState extends State<UploadPrescriptionScreen> {
   bool isUploaded = false;
-  var imageBytes;
+  var imageBytes= Uint8List(0);
 
   set isUp(bool val) => setState(() => isUploaded = val);
   set img(bytes) => setState(() => imageBytes = bytes);
@@ -109,7 +111,7 @@ class _UploadPrescriptionScreenState extends State<UploadPrescriptionScreen> {
               isUploaded ? Column (
                 children: [
                   const SizedBox(height: 10),
-                  imageBytes != null ?
+                  imageBytes.lengthInBytes != 0 ?
                   Image.memory(imageBytes, width: 200, height: 200,) : const SizedBox(),
                 ],) : Container()
             ],

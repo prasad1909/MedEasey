@@ -254,7 +254,6 @@ class _RegisterState extends State<Register> {
                                 } else if (e.code == 'email-already-in-use') {
                                   popUp('User with this email already exists');
                                 }
-                                print(e.code);
                               }
                             }
                           },

@@ -8,10 +8,10 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const BasicAppbar(),
+    return const Scaffold(
+      appBar: BasicAppbar(),
       body: Body(),
-      bottomNavigationBar: const BottomNavBar(3),
+      bottomNavigationBar: BottomNavBar(3),
     );
   }
 }

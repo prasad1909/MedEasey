@@ -14,14 +14,14 @@ class ColorLoader4 extends StatefulWidget {
   final DotType dotType;
   final Icon dotIcon;
 
-  ColorLoader4({
+   const ColorLoader4({Key? key, 
     this.dotOneColor = Colors.redAccent,
     this.dotTwoColor = Colors.green,
     this.dotThreeColor = Colors.blueAccent,
     this.duration = const Duration(milliseconds: 1000),
     this.dotType = DotType.circle,
     this.dotIcon = const Icon(Icons.blur_on)
-  });
+  }) : super(key: key);
 
   @override
   _ColorLoader4State createState() => _ColorLoader4State();
@@ -102,7 +102,7 @@ class _ColorLoader4State extends State<ColorLoader4>
                       ? animation_2.value
                       : 1.0 - animation_2.value),
             ),
-            child: new Padding(
+            child: Padding(
               padding: const EdgeInsets.only(right: 8.0),
               child: Dot(
                 10.0,
@@ -148,14 +148,14 @@ class Dot extends StatelessWidget {
   final DotType type;
   final Icon icon;
 
-  Dot(this.radius, this.color, this.type, this.icon);
+  const Dot(this.radius, this.color, this.type, this.icon, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return new Center(
+    return Center(
       child: type == DotType.icon ?
           Icon(icon.icon, color: color, size: 1.3 * radius,)
-          : new Transform.rotate(
+          : Transform.rotate(
         angle: type == DotType.diamond ? pi/4 : 0.0,
         child: Container(
           width: radius,

@@ -8,13 +8,13 @@ class AppLoader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: ColorLoader4(
           dotOneColor: Colors.red,
           dotTwoColor: Colors.deepOrange,
           dotThreeColor: Colors.deepOrangeAccent,
           dotType: DotType.circle,
-          duration: const Duration(seconds: 1)),
+          duration: Duration(seconds: 1)),
     );
   }
 }

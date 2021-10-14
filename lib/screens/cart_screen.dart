@@ -75,7 +75,7 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF669FDC),
+      backgroundColor: const Color(0xFF669FDC),
       appBar: const BasicAppbar(),
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
@@ -108,7 +108,7 @@ class _CartScreenState extends State<CartScreen> {
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                             child: Text('₹ $total',
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 23,
                                     color: Colors.black,
                                     fontWeight: FontWeight.w300))),
@@ -129,7 +129,7 @@ class _CartScreenState extends State<CartScreen> {
                               }
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: Color(0xFF6BD1FF),
+                              primary: const Color(0xFF6BD1FF),
                               fixedSize: Size(
                                   MediaQuery.of(context).size.width / 2.5, 50),
                               shape: RoundedRectangleBorder(

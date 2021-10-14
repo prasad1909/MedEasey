@@ -1,7 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import '../../utils/app_loader.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Intermediate extends StatefulWidget {
   const Intermediate({Key? key}) : super(key: key);
@@ -27,7 +26,7 @@ class _IntermediateState extends State<Intermediate> {
   }
 
   nextText() {
-    var rng = new Random();
+    var rng = Random();
     var num = rng.nextInt(6)+2;
     Future.delayed(
         const Duration(seconds: 5),
@@ -59,7 +58,7 @@ class _IntermediateState extends State<Intermediate> {
                 ),
                 Text(
                   text,
-                  style: TextStyle(fontSize: 22),
+                  style: const TextStyle(fontSize: 22),
                 ),
                 const SizedBox(
                   height: 10,

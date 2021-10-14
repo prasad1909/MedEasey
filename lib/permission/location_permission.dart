@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:geolocator/geolocator.dart' as Geo;
+import 'package:geolocator/geolocator.dart' as geo;
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class NewAskeForPermission extends StatefulWidget {
+  const NewAskeForPermission({Key? key}) : super(key: key);
+
   @override
   _NewAskeForPermissionState createState() => _NewAskeForPermissionState();
 }
@@ -25,14 +27,12 @@ class _NewAskeForPermissionState extends State<NewAskeForPermission>
   }
 
   runFirst() async {
-    if (!(await Geo.Geolocator.isLocationServiceEnabled())) {
-      print('loc off');
+    if (!(await geo.Geolocator.isLocationServiceEnabled())) {
       Navigator.pushNamed(context, '/home');
     } else {
       await _requestPerms();
       if (_status == ServiceStatus.enabled) {
-        var pos = await Geo.Geolocator.getCurrentPosition();
-        print(pos);
+        var pos = await geo.Geolocator.getCurrentPosition();
         SharedPreferences _prefs = await SharedPreferences.getInstance();
         _prefs.setDouble('latitude', pos.latitude);
         _prefs.setDouble('longitude', pos.longitude);
@@ -45,7 +45,7 @@ class _NewAskeForPermissionState extends State<NewAskeForPermission>
   }
 
   Future _requestPerms() async {
-    Map<Permission, PermissionStatus> statuses = await [
+    await [
       Permission.locationWhenInUse,
       Permission.locationAlways,
     ].request();

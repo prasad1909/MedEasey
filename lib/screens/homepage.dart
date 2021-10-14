@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            SearchBar(),
+            const SearchBar(),
             const SizedBox(
               height: 20,
             ),
@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
                         Navigator.pushNamed(context, '/orders');
                       }
                     },
-                    child: CenterBox("Previous \nOrders", "Repeat Order",
+                    child: const CenterBox("Previous \nOrders", "Repeat Order",
                         "Book Now", "assets/images/orderagain.png")),
                 GestureDetector(
                   onTap: () {
@@ -54,7 +54,7 @@ class HomePage extends StatelessWidget {
                       url: "https://selfregistration.cowin.gov.in/",
                     );
                   },
-                  child: CenterBox("Covid \nVaccination", "#GetJabbed",
+                  child: const CenterBox("Covid \nVaccination", "#GetJabbed",
                       "Book Your \nSlot Now", "assets/images/vaccine2.png"),
                 )
               ],
@@ -62,7 +62,7 @@ class HomePage extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            CenterHeader(),
+            const CenterHeader(),
             const Categories(),
             const SizedBox(
               height: 20,

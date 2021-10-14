@@ -3,7 +3,7 @@ import '../widgets/product/product_card.dart';
 import '../widgets/common/appbar.dart';
 
 class Products extends StatelessWidget {
-  final productList;
+  final dynamic productList;
   const Products({Key? key, required this.productList}) : super(key: key);
 
   @override

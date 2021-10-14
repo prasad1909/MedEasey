@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:getwidget/components/carousel/gf_carousel.dart';
-import 'carouselCard.dart';
+import 'carousel_card.dart';
 
 class CarouselDemo extends StatefulWidget {
   const CarouselDemo({Key? key}) : super(key: key);
